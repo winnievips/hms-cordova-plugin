@@ -244,6 +244,12 @@ class HMSNativeAd extends ads_1.Ads {
     continueDownload() {
         return this.run('continueDownload');
     }
+    setVideoConfiguration(videoConfiguration) {
+        return this.run('setVideoConfiguration', videoConfiguration);
+    }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSNativeAd = HMSNativeAd;
 //# sourceMappingURL=HMSNativeAd.js.map

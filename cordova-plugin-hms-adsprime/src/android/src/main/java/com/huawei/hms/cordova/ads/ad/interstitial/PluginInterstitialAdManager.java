@@ -20,12 +20,15 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.BiddingInfo;
 import com.huawei.hms.ads.InterstitialAd;
+import com.huawei.hms.ads.VideoConfiguration;
 import com.huawei.hms.cordova.ads.Converter;
 import com.huawei.hms.cordova.ads.ad.PluginAbstractAdManager;
 import com.huawei.hms.cordova.ads.basef.handler.CordovaEventRunner;
 import com.huawei.hms.cordova.ads.basef.handler.Promise;
 import com.huawei.hms.cordova.ads.layout.PluginLayoutManager;
+import com.huawei.hms.cordova.ads.utils.ErrorAndStateCodes;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,9 +36,15 @@ import org.json.JSONObject;
 public class PluginInterstitialAdManager extends PluginAbstractAdManager {
     private InterstitialAd interstitialAd;
 
+    public static InterstitialAd globalInterstitialAd;
+
+    public static VideoConfiguration videoConfiguration;
+
     private PluginInterstitialAdListener listener;
 
     private Activity activity;
+
+    private BiddingInfo biddingInfo;
 
     public PluginInterstitialAdManager(Context context, Activity activity, CordovaEventRunner manager,
         JSONObject json) {
@@ -46,6 +55,7 @@ public class PluginInterstitialAdManager extends PluginAbstractAdManager {
         } else {
             interstitialAd = new InterstitialAd(context);
         }
+        globalInterstitialAd = interstitialAd;
         pluginListenerManager = manager;
         listener = new PluginInterstitialAdListener(pluginListenerManager, managerId);
     }
@@ -89,6 +99,24 @@ public class PluginInterstitialAdManager extends PluginAbstractAdManager {
     public void setRewardAdListener(JSONObject args, final Promise promise) {
         interstitialAd.setRewardAdListener(listener.getRewardAdListener());
         promise.success();
+    }
+
+    public void setVideoConfiguration(JSONObject args, final Promise promise) {
+        videoConfiguration = Converter.setVideoConfiguration(args.optJSONObject("videoConfiguration"));
+        promise.success();
+    }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(interstitialAd, promise, ErrorAndStateCodes.AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = interstitialAd.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 
     @Override

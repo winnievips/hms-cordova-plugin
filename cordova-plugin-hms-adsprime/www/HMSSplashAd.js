@@ -78,6 +78,9 @@ class HMSSplashAd extends ads_1.Ads {
     setAudioFocusType(audioFocusType) {
         return this.run('setAudioFocusType', { "audioFocusType": audioFocusType });
     }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSSplashAd = HMSSplashAd;
 //# sourceMappingURL=HMSSplashAd.js.map

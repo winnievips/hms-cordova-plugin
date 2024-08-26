@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { LayoutBounds, NativeAdLoadOptions, NativeAdOptions, Props, VideoOperatorAspectRatio, NativeAdConfiguration, AdvertiserInfo, AppInfo, PromoteInfo } from './interfaces';
+import { LayoutBounds, NativeAdLoadOptions, NativeAdOptions, Props, VideoOperatorAspectRatio, NativeAdConfiguration, AdvertiserInfo, AppInfo, PromoteInfo, BiddingInfo, VideoConfiguration } from './interfaces';
 import { NativeAdEvents } from './HMSConstants';
 import { Ads } from './ads';
 export declare class NativeAlreadyDefinedError extends Error {
@@ -78,4 +78,6 @@ export declare class HMSNativeAd extends Ads {
     setAllowedNonWifiNetwork(allowed: boolean): Promise<void>;
     cancel(): Promise<void>;
     continueDownload(): Promise<void>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }

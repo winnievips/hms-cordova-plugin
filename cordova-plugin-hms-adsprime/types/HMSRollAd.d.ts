@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { LayoutBounds, RollAdLoaderParams, RollAdLoadOptions, Props, Duration, AdvertiserInfo } from './interfaces';
+import { LayoutBounds, RollAdLoaderParams, RollAdLoadOptions, Props, Duration, AdvertiserInfo, BiddingInfo } from './interfaces';
 import { RollAdEvents } from './HMSConstants';
 import { Ads } from './ads';
 export declare class RollAlreadyDefinedError extends Error {
@@ -65,4 +65,5 @@ export declare class HMSRollAd extends Ads {
     getAdvertiserInfo(): Promise<AdvertiserInfo[]>;
     isTransparencyOpen(): Promise<boolean>;
     getTransparencyTplUrl(): Promise<string>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }

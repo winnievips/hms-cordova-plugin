@@ -161,6 +161,9 @@ class HMSBannerAd extends ads_1.Ads {
     getPortraitBannerSize(width) {
         return this.run('getPortraitBannerSize', { "width": width });
     }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSBannerAd = HMSBannerAd;
 //# sourceMappingURL=HMSBannerAd.js.map

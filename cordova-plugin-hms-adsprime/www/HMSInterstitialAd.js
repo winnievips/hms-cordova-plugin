@@ -67,6 +67,12 @@ class HMSInterstitialAd extends ads_1.Ads {
     setRewardAdListener() {
         return this.run('setAdListener');
     }
+    setVideoConfiguration(videoConfiguration) {
+        return this.run('setVideoConfiguration', videoConfiguration);
+    }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSInterstitialAd = HMSInterstitialAd;
 //# sourceMappingURL=HMSInterstitialAd.js.map

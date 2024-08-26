@@ -22,7 +22,9 @@ import {
     NativeAdConfiguration,
     AdvertiserInfo,
     AppInfo,
-    PromoteInfo
+    PromoteInfo,
+    BiddingInfo,
+    VideoConfiguration
 } from './interfaces'
 import { getInitialPropsOfHTMLElementFrom } from './layout'
 import { NativeAdEvents } from './HMSConstants'
@@ -258,5 +260,11 @@ export class HMSNativeAd extends Ads {
     }
     continueDownload(): Promise<void> {
         return this.run('continueDownload')
-    }  
+    }
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return this.run('setVideoConfiguration', videoConfiguration)
+    } 
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
+    }    
 }

@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { ChildProtection, NonPersonalizedAd, UnderAgeOfPromise, AdContentClassification, Gender, AudioFocusType, MediaAspect, MediaDirection, ChoicesPosition, Color, NativeAdTemplate, InstallReferrerResponses, ConsentStatus, HMSScreenOrientation, Anchor, DetailedCreativeType, CreativeMatchType } from './HMSConstants';
+import { ChildProtection, NonPersonalizedAd, UnderAgeOfPromise, AdContentClassification, Gender, AudioFocusType, MediaAspect, MediaDirection, ChoicesPosition, Color, NativeAdTemplate, InstallReferrerResponses, ConsentStatus, HMSScreenOrientation, Anchor, DetailedCreativeType, CreativeMatchType, AutoPlayNetType } from './HMSConstants';
 export interface LayoutBounds {
     marginLeft?: number;
     marginRight?: number;
@@ -48,6 +48,15 @@ export interface AdParam {
     detailedCreativeType?: DetailedCreativeType[];
     location?: Location;
     contentBundle?: ContentBundle;
+    tMax?: number;
+    addBiddingParamMap?: AddBiddingParamMap;
+    setBiddingParamMap?: {
+        [key: string]: BiddingParam;
+    };
+}
+export interface AddBiddingParamMap {
+    slotId: string;
+    biddingParam: BiddingParam;
 }
 export interface Location {
     lat: number;
@@ -99,6 +108,7 @@ export interface VideoConfiguration {
     clickToFullScreenRequest?: boolean;
     customizeOperateRequested?: boolean;
     isStartMuted?: boolean;
+    autoPlayNetwork?: AutoPlayNetType;
 }
 export interface NativeAdConfiguration {
     adSize: AdSize;
@@ -203,4 +213,15 @@ export interface AppInfo {
 export interface PromoteInfo {
     type: number;
     name: string;
+}
+export interface BiddingInfo {
+    price: number;
+    cur: string;
+    nurl: string;
+    lurl: string;
+}
+export interface BiddingParam {
+    bidFloor: number;
+    bidFloorCur: string;
+    bpkgName: string[];
 }

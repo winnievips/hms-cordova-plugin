@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { LayoutBounds, AdParam, Props, AdSize } from './interfaces'
+import { LayoutBounds, AdParam, Props, AdSize, BiddingInfo } from './interfaces'
 import { getInitialPropsOfHTMLElementFrom } from './layout'
 import { BannerAdSize, BannerAdEvents, Color } from './HMSConstants'
 import { Ads } from './ads'
@@ -158,5 +158,8 @@ export class HMSBannerAd extends Ads {
     }
     getPortraitBannerSize(width: number): Promise<AdSize> {
         return this.run('getPortraitBannerSize', { "width": width })
+    }
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
     }
 }

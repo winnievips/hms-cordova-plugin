@@ -85,6 +85,7 @@ public class PluginNativeAdListener extends PluginAbstractAdListener {
             @Override
             public void onNativeAdLoaded(NativeAd nativeAd) {
                 globalNativeAd = nativeAd;
+                globalNativeAd.setVideoConfiguration(PluginNativeAdManager.videoConfiguration);
                 configureEventNameAndParamsThenSendEvent(PluginNativeAdListener.NATIVE_AD_LOADED_LOAD);
             }
         };

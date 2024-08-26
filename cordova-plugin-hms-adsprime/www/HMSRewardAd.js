@@ -96,6 +96,12 @@ class HMSRewardAd extends ads_1.Ads {
     setMobileDataAlertSwitch(alertSwitch) {
         return this.run('setMobileDataAlertSwitch', { "alertSwitch": alertSwitch });
     }
+    setVideoConfiguration(videoConfiguration) {
+        return this.run('setVideoConfiguration', videoConfiguration);
+    }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSRewardAd = HMSRewardAd;
 //# sourceMappingURL=HMSRewardAd.js.map

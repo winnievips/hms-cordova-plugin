@@ -28,6 +28,8 @@ import android.widget.TextView;
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.AppDownloadButton;
 import com.huawei.hms.ads.AppDownloadButtonStyle;
+import com.huawei.hms.ads.BiddingInfo;
+import com.huawei.hms.ads.VideoConfiguration;
 import com.huawei.hms.ads.VideoOperator;
 import com.huawei.hms.ads.nativead.MediaView;
 import com.huawei.hms.ads.nativead.NativeAd;
@@ -61,11 +63,15 @@ public class PluginNativeAdManager extends PluginAbstractAdManager {
 
     private static final String NATIVE_AD_WITH_APP_DOWNLOAD_BTN_TEMPLATE = "native_ad_with_app_download_btn_template";
 
+    public static VideoConfiguration videoConfiguration;
+
     private NativeAd nativeAd;
 
     private AppInfo appInfo;
 
     private PromoteInfo promoteInfo;
+
+    private BiddingInfo biddingInfo;
 
     private NativeView nativeView;
 
@@ -523,6 +529,24 @@ public class PluginNativeAdManager extends PluginAbstractAdManager {
                 return -1;
             }
         }
+    }
+
+    public void setVideoConfiguration(JSONObject args, final Promise promise) {
+        videoConfiguration = Converter.setVideoConfiguration(args);
+        promise.success();
+    }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(nativeAd, promise, ErrorAndStateCodes.NATIVE_AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = nativeAd.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 
 }

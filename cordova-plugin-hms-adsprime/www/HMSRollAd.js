@@ -206,6 +206,9 @@ class HMSRollAd extends ads_1.Ads {
     getTransparencyTplUrl() {
         return this.run('getTransparencyTplUrl');
     }
+    getBiddingInfo() {
+        return this.run('getBiddingInfo');
+    }
 }
 exports.HMSRollAd = HMSRollAd;
 //# sourceMappingURL=HMSRollAd.js.map

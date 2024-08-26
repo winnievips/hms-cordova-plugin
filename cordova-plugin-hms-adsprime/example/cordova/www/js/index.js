@@ -77,6 +77,12 @@ var interstitialAd;
 $("create_interstitial").onclick = async() => {
     interstitialAd = new HMSAds.HMSInterstitialAd();
     await interstitialAd.create(true);
+
+    const videoConfiguration = {
+        autoPlayNetwork: AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await interstitialAd.setVideoConfiguration(videoConfiguration);
+
     await interstitialAd.setAdId("testb4znbuh3n2");
     await interstitialAd.setAdListener();
     interstitialAd.on(
@@ -172,6 +178,11 @@ $("load_reward").onclick = async() => {
     var rewardAd = new HMSAds.HMSRewardAd();
     await rewardAd.create("testx9dtjwj8hp");
     
+    const videoConfiguration = {
+        autoPlayNetwork: AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await interstitialAd.setVideoConfiguration(videoConfiguration);
+
     rewardAd.on(HMSConstants.RewardAdEvents.REWARDED_LOADED, async() => {
         await rewardAd.show(true); // if use loadAdWithAdId function,call this show(false) function in HMSConstants.RewardAdEvents.REWARD_AD_LOADED, call setRewardAdListener() and listen HMSConstants.RewardAdEvents.REWARDED to get result.
     });
@@ -246,7 +257,13 @@ $("native").onclick = async() => {
         bg: "#E4E4E4",
     });
 
-    const nativeAdOptions = { requestCustomDislikeThisAd: true };
+    const nativeAdOptions = { requestCustomDislikeThisAd: true};
+
+    const videoConfiguration = {
+        isStartMuted: true,
+        autoPlayNetwork: HMSConstants.AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await nativeAd.setVideoConfiguration(videoConfiguration);
 
     nativeAd.on(HMSConstants.NativeAdEvents.NATIVE_AD_LOADED, async() => {
         console.log("Native Ad Loaded.");

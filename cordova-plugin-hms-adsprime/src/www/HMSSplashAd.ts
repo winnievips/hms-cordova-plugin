@@ -14,7 +14,7 @@
     limitations under the License.
 */
 import { HMSScreenOrientation, SplashAdEvents, AudioFocusType } from './HMSConstants'
-import { AdParam, SplashAdLoadOptions } from './interfaces'
+import { AdParam, SplashAdLoadOptions, BiddingInfo } from './interfaces'
 import { Ads } from './ads'
 
 export class HMSSplashAd extends Ads{
@@ -75,6 +75,10 @@ export class HMSSplashAd extends Ads{
 
     setAudioFocusType(audioFocusType: AudioFocusType): Promise<void>{
         return this.run('setAudioFocusType', {"audioFocusType": audioFocusType})
+    }
+    
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
     }
 
 

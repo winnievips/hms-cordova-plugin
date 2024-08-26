@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { AdParam, HMSReward, HMSRewardVerifyConfig } from './interfaces'
+import { AdParam, HMSReward, HMSRewardVerifyConfig, BiddingInfo, VideoConfiguration } from './interfaces'
 import { RewardAdEvents } from './HMSConstants'
 import { Ads } from './ads'
 
@@ -100,5 +100,13 @@ export class HMSRewardAd extends Ads {
 
     setMobileDataAlertSwitch(alertSwitch:boolean): Promise<void>{
         return this.run('setMobileDataAlertSwitch',{"alertSwitch" :alertSwitch})
-    } 
+    }
+    
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return this.run('setVideoConfiguration', videoConfiguration)
+    }
+    
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
+    }
 }

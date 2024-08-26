@@ -287,6 +287,11 @@ export declare enum AppDownloadStatus {
     INSTALL = "INSTALL",
     INSTALLED = "INSTALLED"
 }
+export declare enum AutoPlayNetType {
+    WIFI_ONLY = 0,
+    BOTH_WIFI_AND_DATA = 1,
+    FORBID_AUTO_PLAY = 2
+}
 export interface LayoutBounds {
     marginLeft?: number;
     marginRight?: number;
@@ -320,6 +325,15 @@ export interface AdParam {
     detailedCreativeType?: DetailedCreativeType[];
     location?: Location;
     contentBundle?: ContentBundle;
+    tMax?: number;
+    addBiddingParamMap?: AddBiddingParamMap;
+    setBiddingParamMap?: {
+        [key: string]: BiddingParam;
+    };
+}
+export interface AddBiddingParamMap {
+    slotId: string;
+    biddingParam: BiddingParam;
 }
 export interface Location {
     lat: number;
@@ -371,6 +385,7 @@ export interface VideoConfiguration {
     clickToFullScreenRequest?: boolean;
     customizeOperateRequested?: boolean;
     isStartMuted?: boolean;
+    autoPlayNetwork?: AutoPlayNetType;
 }
 export interface NativeAdConfiguration {
     adSize: AdSize;
@@ -476,6 +491,17 @@ export interface PromoteInfo {
     type: number;
     name: string;
 }
+export interface BiddingInfo {
+    price: number;
+    cur: string;
+    nurl: string;
+    lurl: string;
+}
+export interface BiddingParam {
+    bidFloor: number;
+    bidFloorCur: string;
+    bpkgName: string[];
+}
 export declare class HMSAds extends AwesomeCordovaNativePlugin {
     HMSInterstitialAd: typeof HMSInterstitialAd;
     HMSBannerAd: typeof HMSBannerAd;
@@ -540,6 +566,7 @@ export declare class HMSBannerAd extends AwesomeCordovaNativePlugin {
     getCurrentDirectionBannerSize(width: number): Promise<AdSize>;
     getLandscapeBannerSize(width: number): Promise<AdSize>;
     getPortraitBannerSize(width: number): Promise<AdSize>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSInterstitialAd extends AwesomeCordovaNativePlugin {
     on(eventName: InterstitialAdEvents, callback: (result?: any) => void): void;
@@ -561,6 +588,8 @@ export declare class HMSInterstitialAd extends AwesomeCordovaNativePlugin {
     videoOperatorPause(): Promise<void>;
     videoOperatorPlay(): Promise<void>;
     videoOperatorStop(): Promise<void>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSNativeAd extends AwesomeCordovaNativePlugin {
     on(eventName: NativeAdEvents, callback: (result?: any) => void): void;
@@ -606,6 +635,8 @@ export declare class HMSNativeAd extends AwesomeCordovaNativePlugin {
     isTransparencyOpen(): Promise<boolean>;
     getTransparencyTplUrl(): Promise<string>;
     getInterActionType(): Promise<number>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSRewardAd extends AwesomeCordovaNativePlugin {
     on(eventName: RewardAdEvents, callback: (result?: any) => void): void;
@@ -628,6 +659,8 @@ export declare class HMSRewardAd extends AwesomeCordovaNativePlugin {
     setOnMetadataChangedListener(): Promise<void>;
     setRewardAdListener(): Promise<void>;
     setMobileDataAlertSwitch(alertSwitch: boolean): Promise<void>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSRollAd extends AwesomeCordovaNativePlugin {
     on(eventName: RollAdEvents, callback: (result?: any) => void): void;
@@ -669,6 +702,7 @@ export declare class HMSRollAd extends AwesomeCordovaNativePlugin {
     getTransparencyTplUrl(): Promise<String>;
     showTransparencyDialog(): Promise<void>;
     hideTransparencyDialog(): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSSplashAd extends AwesomeCordovaNativePlugin {
     on(eventName: SplashAdEvents, callback: (result?: any) => void): void;
@@ -685,6 +719,7 @@ export declare class HMSSplashAd extends AwesomeCordovaNativePlugin {
     isLoaded(): Promise<boolean>;
     setAdDisplayListener(): Promise<void>;
     setAudioFocusType(audioFocusType: AudioFocusType): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
 export declare class HMSVast extends AwesomeCordovaNativePlugin {
     on(eventName: VastEvents, callback: (result?: any) => void): void;

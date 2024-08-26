@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { AdParam, HMSReward, HMSRewardVerifyConfig } from './interfaces';
+import { AdParam, HMSReward, HMSRewardVerifyConfig, BiddingInfo, VideoConfiguration } from './interfaces';
 import { RewardAdEvents } from './HMSConstants';
 import { Ads } from './ads';
 export declare class HMSRewardAd extends Ads {
@@ -39,4 +39,6 @@ export declare class HMSRewardAd extends Ads {
     setOnMetadataChangedListener(): Promise<void>;
     setRewardAdListener(): Promise<void>;
     setMobileDataAlertSwitch(alertSwitch: boolean): Promise<void>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }

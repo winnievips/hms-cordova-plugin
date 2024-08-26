@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.AudioFocusType;
+import com.huawei.hms.ads.BiddingInfo;
 import com.huawei.hms.ads.splash.SplashAd;
 import com.huawei.hms.ads.splash.SplashView;
 import com.huawei.hms.cordova.ads.Converter;
@@ -37,6 +38,7 @@ import com.huawei.hms.cordova.ads.ad.PluginAbstractAdManager;
 import com.huawei.hms.cordova.ads.basef.handler.CordovaEventRunner;
 import com.huawei.hms.cordova.ads.basef.handler.Promise;
 import com.huawei.hms.cordova.ads.layout.PluginLayoutManager;
+import com.huawei.hms.cordova.ads.utils.ErrorAndStateCodes;
 import com.huawei.hms.cordova.ads.utils.FileUtils;
 
 import org.json.JSONException;
@@ -54,6 +56,8 @@ public class PluginSplashAdManager extends PluginAbstractAdManager {
     private RelativeLayout relativeLayout;
 
     private WebView webView;
+
+    private BiddingInfo biddingInfo;
 
     public PluginSplashAdManager(Context context, CordovaEventRunner manager) {
         super();
@@ -201,6 +205,19 @@ public class PluginSplashAdManager extends PluginAbstractAdManager {
                 Converter.fromJsonObjectToAdParam(json.optJSONObject("adParam")));
         }
         promise.success();
+    }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(splashView, promise, ErrorAndStateCodes.AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = splashView.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 
 }

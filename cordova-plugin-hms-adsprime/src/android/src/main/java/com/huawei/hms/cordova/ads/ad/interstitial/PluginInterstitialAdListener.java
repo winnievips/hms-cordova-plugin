@@ -104,6 +104,7 @@ public class PluginInterstitialAdListener extends PluginAbstractAdListener {
             @Override
             public void onAdClicked() {
                 configureEventNameAndParamsThenSendEvent(PluginInterstitialAdListener.INTERSTITIAL_AD_CLICKED);
+                PluginInterstitialAdManager.globalInterstitialAd.setVideoConfiguration(PluginInterstitialAdManager.videoConfiguration);
             }
 
             @Override

@@ -286,3 +286,8 @@ export declare enum AppDownloadStatus {
     INSTALL = "INSTALL",
     INSTALLED = "INSTALLED"
 }
+export declare enum AutoPlayNetType {
+    WIFI_ONLY = 0,
+    BOTH_WIFI_AND_DATA = 1,
+    FORBID_AUTO_PLAY = 2
+}
