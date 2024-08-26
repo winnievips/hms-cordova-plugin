@@ -84,7 +84,7 @@ A signing certificate fingerprint is used to verify the authenticity of an app w
 5. Install HMS ML Language Ionic Native wrappers.
 
     ```bash
-    npm install @ionic-native/core @hmscore/ionic-native-hms-mllanguage
+    npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-mllanguage
     ```
 
 6. Copy **`agconnect-services.json`** file to **`<project_root>/platforms/android/app`** directory.
@@ -153,7 +153,7 @@ A signing certificate fingerprint is used to verify the authenticity of an app w
 5. Install HMS ML Language Ionic Native wrappers.
 
     ```bash
-    npm install @ionic-native/core @hmscore/ionic-native-hms-mllanguage
+    npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-mllanguage
     ```
 
 6. Build Ionic app to generate resource files.
@@ -223,7 +223,7 @@ A signing certificate fingerprint is used to verify the authenticity of an app w
             /*
                 <Other dependencies>
             */
-            classpath 'com.huawei.agconnect:agcp:1.9.0.300'
+            classpath 'com.huawei.agconnect:agcp:1.9.1.301'
         }
     }
 

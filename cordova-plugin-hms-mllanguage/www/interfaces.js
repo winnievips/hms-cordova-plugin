@@ -1,6 +1,5 @@
-"use strict";
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -14,6 +13,8 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CordovaErrors = exports.MLSoundDectSoundTypeResult = exports.MLAftConstants = exports.MLAFTEventCodes = exports.MLAftErrorCodes = exports.MLTtsError = exports.RectStyle = exports.Colors = exports.MLTtsConstants = exports.MLTtsAudioFragmentConstant = exports.MLTranslateLanguages = exports.MLSpeechRealTimeTranscriptionConstants = exports.MLRttScenes = exports.MLRttLanguages = exports.MLLanguageDetection = exports.MLDocumentSkewCorrectionConstant = exports.LANGUAGE = exports.FEATURE = exports.MLAsrConstants = void 0;
 var MLAsrConstants;

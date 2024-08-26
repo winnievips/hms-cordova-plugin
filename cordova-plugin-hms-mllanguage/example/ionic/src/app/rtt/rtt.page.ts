@@ -26,26 +26,24 @@ export class RttPage {
   constructor() { }
 
   public rttAnalyserStart() {
-    var rttAnalyserInput = {
+    var rttReq = {
       mLSpeechRealTimeTranscriptionConfig: {
           setLanguage: "en-US",
           enablePunctuation: true,
           enableSentenceTimeOffset: true,
           enableWordTimeOffset: true,
       }
-    };
-    HMSMLLanguage.rttAnalyserStart(
-      rttAnalyserInput,
+  };
+  HMSMLLanguage.rttAnalyserStart(
+      rttReq,
       function (res) {
           console.log(JSON.stringify(res));
           if (res.eventName == "onResults") {
-            console.log(JSON.stringify(res));
-            this.rttOutput = JSON.stringify(res)+"";
+            alert(JSON.stringify(res));
           } else if (res.hasOwnProperty("partialResult")) {
-            console.log(JSON.stringify(res));
-            this.rttOutput = JSON.stringify(res)+"";
+              alert(JSON.stringify(res));
           }
-      }, function (err) { console.log(err); }
+      }, function (err) { alert("Error: " + err); }
   );
     
   }

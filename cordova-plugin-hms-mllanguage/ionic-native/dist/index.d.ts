@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
     limitations under the License.
 */
 
-import { IonicNativePlugin } from "@ionic-native/core";
+import { AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Observable } from "rxjs";
-export declare class HMSMLPluginOriginal extends IonicNativePlugin {
+export declare class HMSMLPluginOriginal extends AwesomeCordovaNativePlugin {
     FEATURE: typeof FEATURE;
     LANGUAGE: typeof LANGUAGE;
     MLTtsConstants: typeof MLTtsConstants;
@@ -63,7 +63,7 @@ export declare class HMSMLPluginOriginal extends IonicNativePlugin {
      */
     disableLogger(): Promise<any>;
 }
-export declare class HMSMLLanguageOriginal extends IonicNativePlugin {
+export declare class HMSMLLanguageOriginal extends AwesomeCordovaNativePlugin {
     FEATURE: typeof FEATURE;
     LANGUAGE: typeof LANGUAGE;
     MLTtsConstants: typeof MLTtsConstants;

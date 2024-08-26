@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-hms-mllanguage"
-	version="3.11.0-300" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+	version="3.12.0-300" xmlns="http://apache.org/cordova/ns/plugins/1.0">
 	<name>
 		HMS ML Language
 	</name>
@@ -30,15 +30,15 @@
 		<framework src="com.huawei.hms:ml-computer-translate-model:3.11.0.302" />
 		<framework src="com.huawei.hms:ml-computer-language-detection-model:3.11.0.302" />
 		<framework src="com.huawei.hms:ml-computer-language-detection:3.11.0.302" />
-		<framework src="com.huawei.hms:ml-computer-voice-asr-plugin:3.11.0.301" />
-		<framework src="com.huawei.hms:ml-computer-voice-tts:3.11.0.301" />
+		<framework src="com.huawei.hms:ml-computer-voice-asr-plugin:3.12.0.301" />
+		<framework src="com.huawei.hms:ml-computer-voice-tts:3.12.0.301" />
 		<framework src="com.huawei.hms:ml-computer-voice-tts-model-bee:3.6.0.300" />
 		<framework src="com.huawei.hms:ml-computer-voice-tts-model-eagle:3.6.0.300" />
 		<framework src="com.huawei.hms:ml-computer-voice-aft:3.11.0.301" />
-		<framework src="com.huawei.hms:ml-computer-voice-realtimetranscription:3.11.0.301" />
+		<framework src="com.huawei.hms:ml-computer-voice-realtimetranscription:3.12.0.301" />
 		<framework src="com.huawei.hms:ml-speech-semantics-sounddect-sdk:3.11.0.303" />
 		<framework src="com.huawei.hms:ml-speech-semantics-sounddect-model:3.11.0.303" />
-		<framework src="com.huawei.hms:stats:6.11.0.301" />
+		<framework src="com.huawei.hms:stats:6.12.0.300" />
 		<framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
 		<config-file target="config.xml" parent="/*">
 			<feature name="HMSMLPlugin">

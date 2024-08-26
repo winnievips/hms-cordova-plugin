@@ -1,7 +1,7 @@
 {
     "name": "@hmscore/cordova-plugin-hms-mllanguage",
     "description": "Cordova HMS ML Language Plugin",
-    "version": "3.11.0-300",
+    "version": "3.12.0-300",
     "main": "./www/index.js",
     "types": "./types/index.d.ts",
     "repository": {

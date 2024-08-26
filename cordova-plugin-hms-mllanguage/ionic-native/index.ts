@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 */
 
 import { Injectable } from "@angular/core";
-import { Plugin, Cordova, CordovaProperty, IonicNativePlugin } from "@ionic-native/core";
+import { Plugin, Cordova, CordovaProperty, AwesomeCordovaNativePlugin  } from '@awesome-cordova-plugins/core';
 import { Observable } from "rxjs";
 
 @Plugin({
@@ -25,7 +25,7 @@ import { Observable } from "rxjs";
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLPlugin extends IonicNativePlugin {
+export class HMSMLPlugin extends AwesomeCordovaNativePlugin  {
     @CordovaProperty()
     FEATURE = FEATURE;
     @CordovaProperty()
@@ -110,7 +110,7 @@ export class HMSMLPlugin extends IonicNativePlugin {
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLLanguage extends IonicNativePlugin {
+export class HMSMLLanguage extends AwesomeCordovaNativePlugin {
     @CordovaProperty()
     FEATURE = FEATURE;
     @CordovaProperty()

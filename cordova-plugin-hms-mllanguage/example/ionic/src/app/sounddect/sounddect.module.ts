@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { FileChooser } from "@ionic-native/file-chooser/ngx";
+import { FileChooser } from "@awesome-cordova-plugins/file-chooser/ngx";
 import { IonicModule } from "@ionic/angular";
 import { HMSMLLanguage } from "@hmscore/ionic-native-hms-mllanguage/ngx";
 import { SounddectPageRoutingModule } from "./sounddect-routing.module";
