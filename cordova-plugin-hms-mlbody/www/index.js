@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-
 __exportStar(require("./HMSMLBody"), exports);
 __exportStar(require("./HMSMLBodyPlugin"), exports);
 __exportStar(require("./interfaces"), exports);

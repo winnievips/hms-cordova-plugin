@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
     limitations under the License.
 */
 import { Component, OnInit } from '@angular/core';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { FileChooser } from '@awesome-cordova-plugins/file-chooser/ngx';
 declare var HMSMLBody;
 @Component({
   selector: 'app-face',
@@ -52,10 +52,10 @@ export class FacePage {
       alert(JSON.stringify(ex))
     }
   }
-  public async stilFaceAnalyserInfo() {
+  public async stillFaceAnalyserInfo() {
   
     try {
-      alert(JSON.stringify(await HMSMLBody.stilFaceAnalyserInfo()));
+      alert(JSON.stringify(await HMSMLBody.stillFaceAnalyserInfo()));
     } catch (ex) {
       alert(JSON.stringify(ex))
     }

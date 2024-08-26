@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
     limitations under the License.
 */
 
-import { IonicNativePlugin } from "@ionic-native/core";
-export declare class HMSMLBodyPluginOriginal extends IonicNativePlugin {
+import { AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
+export declare class HMSMLBodyPluginOriginal extends AwesomeCordovaNativePlugin {
     MLFaceSetting: typeof MLFaceSetting;
     HandkeyPointConfig: typeof HandkeyPointConfig;
     Colors: typeof Colors;
@@ -87,7 +87,7 @@ export declare class HMSMLBodyPluginOriginal extends IonicNativePlugin {
     setUserRegion(region: number): Promise<any>;
     getCountryCode(): Promise<string>;
 }
-export declare class HMSMLBodyOriginal extends IonicNativePlugin {
+export declare class HMSMLBodyOriginal extends AwesomeCordovaNativePlugin {
     MLFaceSetting: typeof MLFaceSetting;
     HandkeyPointConfig: typeof HandkeyPointConfig;
     Colors: typeof Colors;
@@ -124,11 +124,6 @@ export declare class HMSMLBodyOriginal extends IonicNativePlugin {
      * @returns Promise<any>
      */
     stopStillFaceVerificationAnalyser(): Promise<any>;
-    /**
-     * This method gives the information of the face recognition service.
-     * @returns Promise<any>
-     */
-    stilFaceAnalyserInfo(): Promise<any>;
     /**
      * This method stop face recognition service.
      * @returns Promise<any>
@@ -250,11 +245,14 @@ export interface doZoomReq {
 export interface mlFrameReq {
     actionName: MLFrame;
     filePath: any;
+    quadrant: QuadrantTypes;
 }
 export declare enum MLFrame {
     getPreviewBitmap = "getPreviewBitmap",
     readBitmap = "readBitmap",
-    rotate = "rotate",
+    rotate = "rotate"
+}
+export declare enum QuadrantTypes {
     SCREEN_FIRST_QUADRANT = 0,
     SCREEN_SECOND_QUADRANT = 1,
     SCREEN_THIRD_QUADRANT = 2,

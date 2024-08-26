@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CordovaErrors = exports.InteractiveLivenessStateCode = exports.Events = exports.MLJointPoints = exports.handkeyPointsTypes = exports.MLFaceConstant = exports.Options = exports.RectStyle = exports.Colors = exports.MLSkeletonConfig = exports.MLLivenessCaptureError = exports.MLLivenessConfig = exports.HandkeyPointConfig = exports.GestureTypes = exports.syncType = exports.MLFaceSetting = exports.MLFaceConfigs = exports.MLFrame = exports.MLAnalyzerName = exports.MLLensType = exports.MLFlashMode = void 0;
+exports.CordovaErrors = exports.InteractiveLivenessStateCode = exports.Events = exports.MLJointPoints = exports.handkeyPointsTypes = exports.MLFaceConstant = exports.Options = exports.RectStyle = exports.Colors = exports.MLSkeletonConfig = exports.MLLivenessCaptureError = exports.MLLivenessConfig = exports.HandkeyPointConfig = exports.GestureTypes = exports.syncType = exports.MLFaceSetting = exports.MLFaceConfigs = exports.QuadrantTypes = exports.MLFrame = exports.MLAnalyzerName = exports.MLLensType = exports.MLFlashMode = void 0;
 var MLFlashMode;
 (function (MLFlashMode) {
     MLFlashMode["AUTO"] = "auto";
@@ -46,11 +46,14 @@ var MLFrame;
     MLFrame["getPreviewBitmap"] = "getPreviewBitmap";
     MLFrame["readBitmap"] = "readBitmap";
     MLFrame["rotate"] = "rotate";
-    MLFrame[MLFrame["SCREEN_FIRST_QUADRANT"] = 0] = "SCREEN_FIRST_QUADRANT";
-    MLFrame[MLFrame["SCREEN_SECOND_QUADRANT"] = 1] = "SCREEN_SECOND_QUADRANT";
-    MLFrame[MLFrame["SCREEN_THIRD_QUADRANT"] = 2] = "SCREEN_THIRD_QUADRANT";
-    MLFrame[MLFrame["SCREEN_FOURTH_QUADRANT"] = 3] = "SCREEN_FOURTH_QUADRANT";
 })(MLFrame || (exports.MLFrame = MLFrame = {}));
+var QuadrantTypes;
+(function (QuadrantTypes) {
+    QuadrantTypes[QuadrantTypes["SCREEN_FIRST_QUADRANT"] = 0] = "SCREEN_FIRST_QUADRANT";
+    QuadrantTypes[QuadrantTypes["SCREEN_SECOND_QUADRANT"] = 1] = "SCREEN_SECOND_QUADRANT";
+    QuadrantTypes[QuadrantTypes["SCREEN_THIRD_QUADRANT"] = 2] = "SCREEN_THIRD_QUADRANT";
+    QuadrantTypes[QuadrantTypes["SCREEN_FOURTH_QUADRANT"] = 3] = "SCREEN_FOURTH_QUADRANT";
+})(QuadrantTypes || (exports.QuadrantTypes = QuadrantTypes = {}));
 var MLFaceConfigs;
 (function (MLFaceConfigs) {
     MLFaceConfigs[MLFaceConfigs["TYPE_2D_SYNC"] = 0] = "TYPE_2D_SYNC";

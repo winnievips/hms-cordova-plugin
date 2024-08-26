@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import {
     Plugin,
     Cordova,
     CordovaProperty,
-    IonicNativePlugin,
-} from "@ionic-native/core";
+    AwesomeCordovaNativePlugin,
+} from "@awesome-cordova-plugins/core";
 
 @Plugin({
     pluginName: "HMSMLBodyPlugin",
@@ -29,7 +29,7 @@ import {
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLBodyPlugin extends IonicNativePlugin {
+export class HMSMLBodyPlugin extends AwesomeCordovaNativePlugin {
     @CordovaProperty()
     MLFaceSetting = MLFaceSetting;
     @CordovaProperty()
@@ -151,7 +151,7 @@ export class HMSMLBodyPlugin extends IonicNativePlugin {
     getCountryCode(): Promise<string> {
         return;
     }
-    
+
 }
 
 @Plugin({
@@ -161,7 +161,7 @@ export class HMSMLBodyPlugin extends IonicNativePlugin {
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLBody extends IonicNativePlugin {
+export class HMSMLBody extends AwesomeCordovaNativePlugin {
     @CordovaProperty()
     MLFaceSetting = MLFaceSetting;
     @CordovaProperty()
@@ -248,15 +248,6 @@ export class HMSMLBody extends IonicNativePlugin {
      * @returns Promise<any>
      */
     stopStillFaceVerificationAnalyser(): Promise<any> {
-        return;
-    }
-
-    @Cordova({ otherPromise: true })
-    /**
-     * This method gives the information of the face recognition service.
-     * @returns Promise<any>
-     */
-    stilFaceAnalyserInfo(): Promise<any> {
         return;
     }
     @Cordova({ otherPromise: true })
@@ -404,15 +395,15 @@ export interface lensEngineReq {
     analyzerName: MLAnalyzerName;
     lensEngineSetting?: MLLensEngineSetting;
     graphicSetting?:
-        | FaceGraphicSetting
-        | HandkeyGraphicSetting
-        | SkeletonGraphicSetting
-        | null;
+    | FaceGraphicSetting
+    | HandkeyGraphicSetting
+    | SkeletonGraphicSetting
+    | null;
     analyzerSetting?:
-        | mlFaceAnalyzerSetting
-        | MLFaceVerificationAnalyzerSetting
-        | mlHandKeypointSetting
-        | null;
+    | mlFaceAnalyzerSetting
+    | MLFaceVerificationAnalyzerSetting
+    | mlHandKeypointSetting
+    | null;
 }
 export interface MLLensEngineSetting {
     fps?: number | null;
@@ -449,11 +440,14 @@ export interface doZoomReq {
 export interface mlFrameReq {
     actionName: MLFrame;
     filePath: any;
+    quadrant: QuadrantTypes;
 }
 export enum MLFrame {
     getPreviewBitmap = "getPreviewBitmap",
     readBitmap = "readBitmap",
     rotate = "rotate",
+}
+export enum QuadrantTypes {
     SCREEN_FIRST_QUADRANT = 0,
     SCREEN_SECOND_QUADRANT = 1,
     SCREEN_THIRD_QUADRANT = 2,
@@ -715,7 +709,7 @@ export enum MLLivenessCaptureError {
 // Custom Interactive Liveness Detection
 export interface customInteractiveLivenessDetectionReq {
     action?: Action,
-    detectionTimeOut : number;
+    detectionTimeOut: number;
     cameraFrame: Rect;
     faceFrame: Rect;
     textMargin: number;
@@ -804,7 +798,7 @@ export enum RectStyle {
 // Interactive Liveness Detection
 export interface interactiveLivenessDetectionReq {
     options: Options;
-    detectionTimeOut : number;
+    detectionTimeOut: number;
     action?: DefaultAction;
 }
 export enum Options {
@@ -812,7 +806,7 @@ export enum Options {
     DETECT_SUNGLASS = 2
 }
 export interface DefaultAction {
-    actionArray: number [];
+    actionArray: number[];
     num: number;
     isRandom: boolean;
 }
