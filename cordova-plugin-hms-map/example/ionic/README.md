@@ -103,7 +103,7 @@ generated the certificate.
 5. Install HMS Map Ionic Native wrappers.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-map
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-map
    ```
 
 6. Copy **`agconnect-services.json`** file to **`<project_root>/platforms/android/app`** directory.
@@ -175,7 +175,7 @@ generated the certificate.
 4. Install HMS Map Ionic Native wrappers.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-map
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-map
    ```
 
 5. Build Ionic app to generate resource files.

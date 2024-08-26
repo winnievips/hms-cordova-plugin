@@ -15,7 +15,7 @@
 */
 
 import { Injectable } from "@angular/core";
-import { Cordova, IonicNativePlugin, Plugin } from "@ionic-native/core";
+import { Cordova, AwesomeCordovaNativePlugin, Plugin } from "@awesome-cordova-plugins/core";
 
 @Plugin({
     pluginName: "HMSMap",
@@ -25,7 +25,7 @@ import { Cordova, IonicNativePlugin, Plugin } from "@ionic-native/core";
     platforms: ["Android"],
 })
 @Injectable()
-export class HMSMap extends IonicNativePlugin {
+export class HMSMap extends AwesomeCordovaNativePlugin {
     @Cordova({ otherPromise: true })
     getMap(
         divId: string,

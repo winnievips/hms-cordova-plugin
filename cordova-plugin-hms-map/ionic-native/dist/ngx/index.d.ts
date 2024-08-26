@@ -14,8 +14,8 @@
     limitations under the License.
 */
 
-import { IonicNativePlugin } from "@ionic-native/core";
-export declare class HMSMap extends IonicNativePlugin {
+import { AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
+export declare class HMSMap extends AwesomeCordovaNativePlugin {
     getMap(divId: string, huaweiMapOptions: HuaweiMapOptions, bounds?: MapBounds): Promise<HuaweiMap>;
     showMap(divId: string): Promise<HuaweiMap>;
     hasPermission(): Promise<boolean>;
@@ -620,9 +620,9 @@ export interface Interpolator {
     args?: any;
 }
 export interface MyLocationStyle {
-    anchor: Anchor;
+    anchor?: Anchor;
     myLocationIcon: BitmapDescriptor;
-    radiusFillColor: number;
+    radiusFillColor?: number;
 }
 export declare enum TileType {
     URL_TILE = 0,
