@@ -14,8 +14,8 @@
     limitations under the License.
 */
 
-import { IonicNativePlugin } from "@ionic-native/core";
-export declare class HmsPushOriginal extends IonicNativePlugin {
+import { AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
+export declare class HmsPushOriginal extends AwesomeCordovaNativePlugin {
     HmsPushResultCode: typeof HmsPushResultCode;
     CordovaRemoteMessage: typeof CordovaRemoteMessage;
     RemoteMessageBuilder: typeof RemoteMessageBuilder;
@@ -113,16 +113,14 @@ export declare class HmsPushOriginal extends IonicNativePlugin {
     removeItem(key: string): Promise<void>;
     removeBackgroundFile(): Promise<void>;
 }
-export declare class HmsLocalNotificationOriginal extends IonicNativePlugin {
+export declare class HmsLocalNotificationOriginal extends AwesomeCordovaNativePlugin {
     Attr: typeof Attr;
     Importance: typeof Importance;
     Priority: typeof Priority;
     RepeatType: typeof RepeatType;
     Visibility: typeof Visibility;
     localNotification(localNotification: LocalNotificationObject): Promise<any>;
-    localNotificationSchedule(
-        localNotification: LocalNotificationObject
-    ): Promise<any>;
+    localNotificationSchedule(localNotification: LocalNotificationObject): Promise<any>;
     cancelAllNotifications(): Promise<boolean>;
     cancelNotifications(): Promise<boolean>;
     cancelScheduledNotifications(): Promise<boolean>;
@@ -136,7 +134,7 @@ export declare class HmsLocalNotificationOriginal extends IonicNativePlugin {
     channelBlocked(channelId: string): Promise<boolean>;
     deleteChannel(channelId: string): Promise<boolean>;
 }
-export declare class HmsPushEventOriginal extends IonicNativePlugin {
+export declare class HmsPushEventOriginal extends AwesomeCordovaNativePlugin {
     onRemoteMessageReceived(callback: (data: any) => void): void;
     onTokenReceived(callback: (data: any) => void): void;
     onTokenError(callback: (data: any) => void): void;
@@ -158,7 +156,7 @@ export declare class HmsPushEventOriginal extends IonicNativePlugin {
     ON_MULTI_SENDER_TOKEN_ERROR_EVENT: string;
     ON_MULTI_SENDER_TOKEN_RECEIVED_EVENT: string;
 }
-export declare class HmsPushProfileOriginal extends IonicNativePlugin {
+export declare class HmsPushProfileOriginal extends AwesomeCordovaNativePlugin {
     HUAWEI_PROFILE: number;
     CUSTOM_PROFILE: number;
     UNDEFINED_PROFILE: number;
@@ -167,16 +165,9 @@ export declare class HmsPushProfileOriginal extends IonicNativePlugin {
      */
     isSupportProfile(): Promise<boolean>;
     addProfile(type: number, profileId: string): Promise<any>;
-    addProfileWithSubjectId(
-        subjectId: string,
-        type: number,
-        profileId: string
-    ): Promise<any>;
+    addProfileWithSubjectId(subjectId: string, type: number, profileId: string): Promise<any>;
     deleteProfile(profileId: string): Promise<any>;
-    deleteProfileWithSubjectId(
-        subjectId: string,
-        profileId: string
-    ): Promise<any>;
+    deleteProfileWithSubjectId(subjectId: string, profileId: string): Promise<any>;
 }
 export declare enum HmsPushResultCode {
     SUCCESS = "0",
@@ -220,7 +211,7 @@ export declare enum HmsPushResultCode {
     ERROR_CERT_FINGERPRINT_ERROR = "6003",
     ERROR_PERMISSION_NOT_EXIST = "6004",
     ERROR_PERMISSION_NOT_AUTHORIZED = "6005",
-    ERROR_PERMISSION_EXPIRED = "6006",
+    ERROR_PERMISSION_EXPIRED = "6006"
 }
 export declare enum Attr {
     id = "id",
@@ -259,7 +250,7 @@ export declare enum Attr {
     priority = "priority",
     importance = "importance",
     visibility = "visibility",
-    data = "data",
+    data = "data"
 }
 export declare enum Importance {
     MAX = "max",
@@ -268,26 +259,26 @@ export declare enum Importance {
     LOW = "low",
     MIN = "min",
     NONE = "none",
-    UNSPECIFIED = "unspecified",
+    UNSPECIFIED = "unspecified"
 }
 export declare enum Priority {
     MAX = "max",
     HIGH = "high",
     DEFAULT = "default",
     LOW = "low",
-    MIN = "min",
+    MIN = "min"
 }
 export declare enum RepeatType {
     HOUR = "hour",
     MINUTE = "minute",
     DAY = "day",
     WEEK = "week",
-    CUSTOM_TIME = "custom_time",
+    CUSTOM_TIME = "custom_time"
 }
 export declare enum Visibility {
     PUBLIC = "public",
     SECRET = "secret",
-    PRIVATE = "private",
+    PRIVATE = "private"
 }
 export declare enum RemoteMessageBuilder {
     TO = "to",
@@ -297,7 +288,7 @@ export declare enum RemoteMessageBuilder {
     COLLAPSE_KEY = "collapseKey",
     RECEIPT_MODE = "receiptMode",
     SEND_MODE = "sendMode",
-    DATA = "data",
+    DATA = "data"
 }
 declare class CordovaRemoteMessage {
     static INSTANCE_ID_SCOPE: string;

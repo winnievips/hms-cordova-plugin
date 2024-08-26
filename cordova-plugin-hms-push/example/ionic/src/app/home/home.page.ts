@@ -94,6 +94,14 @@ export class HomePage {
     this.hmsPushEvent.onPushMessageSentError((result) => {
       this.addLog("ON_PUSH_MESSAGE_SENT_ERROR", JSON.stringify(result));
     });
+
+    this.hmsPushEvent.onMultiSenderTokenReceivedEvent((result) => {
+      this.addLog("ON_MULTI_SENDER_TOKEN_RECEIVED_EVENT", JSON.stringify(result));
+    });
+    
+    this.hmsPushEvent.onMultiSenderTokenErrorEvent((result) => {
+      this.addLog("ON_MULTI_SENDER_TOKEN_ERROR_EVENT", JSON.stringify(result));
+    });
   }
 
   openCustomIntent() {

@@ -1,4 +1,4 @@
-# HMS Push Cordova Demo
+# HMS Push Ionic Demo
 
 ## Contents
 
@@ -21,21 +21,61 @@ This demo application demonstrates the usage of HMS Push Cordova Plugin.
 
 ## 2. Installation Guide
 
-### 2.1. Ionic
+Before you get started, you must register as a HUAWEI Developer and complete identity verification
+on the [HUAWEI Developer](https://developer.huawei.com/consumer/en/?ha_source=hms1) website. For
+details, please refer
+to [Register a HUAWEI ID](https://developer.huawei.com/consumer/en/doc/10104?ha_source=hms1).
 
-1. Install Ionic CLI.
+### 2.1. Creating a Project in AppGallery Connect
+
+Creating an app in AppGallery Connect is required in order to communicate with the Huawei services.
+To create an app, perform the following steps:
+
+1. Sign in
+   to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html?ha_source=hms1)
+   and select **My projects**.
+2. Select your project from the project list or create a new one by clicking the **Add Project**
+   button.
+3. Go to **Project Setting** > **General information**, and click **Add app**.
+    - If an app exists in the project and you need to add a new one, expand the app selection area
+      on the top of the page and click **Add app**.
+4. On the **Add app** page, enter the app information, and click **OK**.
+
+### 2.2. Configuring the Signing Certificate Fingerprint and Obtaining agconnect-services.json
+
+A signing certificate fingerprint is used to verify the authenticity of an app when it attempts to
+access an HMS Core (APK) through the HMS SDK. Before using the HMS Core (APK), you must locally
+generate a signing certificate fingerprint and configure it in the **AppGallery Connect**. You can
+refer to 3rd and 4th steps
+of [Generating a Signing Certificate](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#2?ha_source=hms1)
+Codelab tutorial for the certificate generation. Perform the following steps after you have
+generated the certificate.
+
+1. Sign in
+   to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html?ha_source=hms1)
+   and select your project from **My Projects**. Then go to **Project Setting** > **General
+   information**. In the **App information** field, click the icon next to SHA-256 certificate
+   fingerprint, and enter the obtained **SHA-256 certificate fingerprint**.
+2. After completing the configuration, click **OK** to save the changes. (Check mark icon)
+3. In the same page, click **agconnect-services.json** button to download the configuration file.
+
+### 2.3. Ionic
+
+1. Install Ionic CLI and other required tools if haven't done before.
 
    ```bash
-   npm install -g @ionic/cli
+   npm install -g @ionic/cli cordova-res native-run
    ```
 
-2. Create a new Ionic project or use existing Ionic project.
+2. Open the demo project's root directory.
 
-- To create a new Ionic project, you can use **`ionic start <name> <template> [options]`** command.
-  For more details please
-  follow [ionic start - Ionic Documentation](https://ionicframework.com/docs/cli/commands/start).
+3. Install project dependencies.
 
-#### 2.1.1. With Cordova Runtime
+   ```bash
+   npm install
+   ```
+
+#### 2.3.1. Ionic with Cordova Runtime
 
 1. Enable the **Cordova integration** if haven't done before.
 
@@ -72,7 +112,7 @@ This demo application demonstrates the usage of HMS Push Cordova Plugin.
 5. If you want to enable Ionic Native support then run the following command.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-push
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-push
    ```
 
 6. Copy **`agconnect-services.json`** file to **`<project_root>/android/app`** directory.
@@ -110,7 +150,7 @@ This demo application demonstrates the usage of HMS Push Cordova Plugin.
    ionic cordova run android --device
    ```
 
-#### 2.1.2. With Capacitor Runtime
+#### 2.3.2. With Capacitor Runtime
 
 1. Enable the **Capacitor integration** if haven't done before.
 
@@ -142,7 +182,7 @@ This demo application demonstrates the usage of HMS Push Cordova Plugin.
 4. If you want to enable Ionic Native support then run the following command.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-push
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-push
    ```
 
 5. Build Ionic app to generate resource files.
@@ -219,7 +259,7 @@ This demo application demonstrates the usage of HMS Push Cordova Plugin.
             /*
                 <Other dependencies>
             */
-            classpath 'com.huawei.agconnect:agcp:1.9.1.300'
+            classpath 'com.huawei.agconnect:agcp:1.9.1.301'
         }
     }
 

@@ -15,7 +15,7 @@
 */
 
 import { Injectable } from "@angular/core";
-import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
 
 @Plugin({
     pluginName: "HmsPush",
@@ -25,7 +25,7 @@ import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
     platforms: ["Android"],
 })
 @Injectable()
-export class HmsPush extends IonicNativePlugin {
+export class HmsPush extends AwesomeCordovaNativePlugin {
     HmsPushResultCode = HmsPushResultCode;
     CordovaRemoteMessage = CordovaRemoteMessage;
     RemoteMessageBuilder = RemoteMessageBuilder;
@@ -231,7 +231,7 @@ export class HmsPush extends IonicNativePlugin {
     platforms: ["Android"],
 })
 @Injectable()
-export class HmsLocalNotification extends IonicNativePlugin {
+export class HmsLocalNotification extends AwesomeCordovaNativePlugin {
     Attr = Attr;
     Importance = Importance;
     Priority = Priority;
@@ -321,7 +321,7 @@ export class HmsLocalNotification extends IonicNativePlugin {
     platforms: ["Android"],
 })
 @Injectable()
-export class HmsPushEvent extends IonicNativePlugin {
+export class HmsPushEvent extends AwesomeCordovaNativePlugin {
     @Cordova({ otherPromise: true })
     onRemoteMessageReceived(callback: (data: any) => void): void {
         return;
@@ -392,7 +392,7 @@ export class HmsPushEvent extends IonicNativePlugin {
     platforms: ["Android"],
 })
 @Injectable()
-export class HmsPushProfile extends IonicNativePlugin {
+export class HmsPushProfile extends AwesomeCordovaNativePlugin {
     HUAWEI_PROFILE = 1;
     CUSTOM_PROFILE = 2;
     UNDEFINED_PROFILE = -1;

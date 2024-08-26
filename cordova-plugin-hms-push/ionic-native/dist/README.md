@@ -1,4 +1,15 @@
-# Ionic Native HMS Push
+<p align="center">
+  <h1 align="center">Ionic Native HMS Push</h1>
+</p>
+
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@hmscore/ionic-native-hms-push"><img src="https://img.shields.io/npm/dm/@hmscore/ionic-native-hms-push?color=%23007EC6&style=for-the-badge" alt="downloads"></a>
+  <a href="https://www.npmjs.com/package/@hmscore/ionic-native-hms-push"><img src="https://img.shields.io/npm/v/@hmscore/ionic-native-hms-push?color=%23ed2a1c&style=for-the-badge" alt="NPM version"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/npm/l/@hmscore/ionic-native-hms-push.svg?color=%3bcc62&style=for-the-badge" alt="License"></a>
+</p>
+
+----
 
 ## 1. About
 
@@ -16,7 +27,7 @@ $ ionic cordova plugin add @hmscore/cordova-plugin-hms-push
 ```
 
 ```bash
-$ npm install @ionic-native/core @hmscore/ionic-native-hms-push
+$ npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-push
 ```
 
 ### 2.2 With Capacitor Runtime
@@ -26,19 +37,28 @@ $ npm install @hmscore/cordova-plugin-hms-push
 ```
 
 ```bash
-$ npm install @ionic-native/core @hmscore/ionic-native-hms-push
+$ npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-push
 ```
 
 ---
 
-## 3. Developer Documents
+## 3. Usage Documentation
 
-You can find the development guide, API reference, and sample project on
-the [HMS Core](https://developer.huawei.com/consumer/en/doc/overview/HMS-Core-Plugin?ha_source=hms1) page.
+- [GitHub repository](https://github.com/HMS-Core/hms-cordova-plugin)
+
+- [API reference and sample codes](https://github.com/HMS-Core/hms-cordova-plugin/blob/master/cordova-plugin-hms-push/README.md#3-api-reference)
 
 ---
 
-## 4. Questions or Issues
+## 4. Sample Project
+
+You can find the sample projects
+on [HMS Core > Samples > In-App Purchases](https://developer.huawei.com/consumer/en/doc/overview/HMS-Core-Plugin?ha_source=hms1)
+page.
+
+---
+
+## 5. Questions or Issues
 
 If you have questions about how to use HMS samples, try the following options:
 

@@ -1,12 +1,17 @@
-# Cordova HMS Push
+<p align="center">
+  <h1 align="center">Cordova HMS Push</h1>
+</p>
 
-Cordova Push Kit is a messaging service provided for you. It establishes a messaging channel from
-the cloud to devices. By integrating Cordova Push Kit, you can send messages to your apps on users'
-devices in real time. This helps you maintain closer ties with users and increases user awareness of
-and engagement with your apps.
 
-This plugin enables communication between Huawei Push SDK and Cordova platform. It exposes all
-functionality provided by Huawei Push SDK.
+<p align="center">
+  <a href="https://www.npmjs.com/package/@hmscore/cordova-plugin-hms-push"><img src="https://img.shields.io/npm/dm/@hmscore/cordova-plugin-hms-push?color=%23007EC6&style=for-the-badge" alt="downloads"></a>
+  <a href="https://www.npmjs.com/package/@hmscore/cordova-plugin-hms-push"><img src="https://img.shields.io/npm/v/@hmscore/cordova-plugin-hms-push?color=%23ed2a1c&style=for-the-badge" alt="NPM version"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/npm/l/@hmscore/cordova-plugin-hms-push.svg?color=%3bcc62&style=for-the-badge" alt="License"></a>
+</p>
+
+----
+
+This plugin enables communication between Huawei Ads SDK and Cordova platform. It exposes all functionality provided by Huawei Ads SDK.
 
 [> Learn More](https://developer.huawei.com/consumer/en/doc/development/HMS-Plugin-Guides/introduction-0000001050136388?ha_source=hms1)
 
