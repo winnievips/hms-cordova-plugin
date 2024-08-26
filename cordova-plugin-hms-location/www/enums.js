@@ -13,6 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RequestType = exports.NotificationImportance = exports.NotificationCategory = exports.GeofenceTriggerType = exports.GeofenceInitConversionType = exports.CoordinateType = exports.ConversionType = exports.ActivityType = exports.NavigationRequestConstants = exports.PriorityConstants = exports.Events = void 0;

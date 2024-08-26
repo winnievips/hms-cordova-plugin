@@ -14,6 +14,7 @@ import { __decorate, __extends } from "tslib";
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+
 import { Injectable } from '@angular/core';
 import { AwesomeCordovaNativePlugin, cordova } from '@awesome-cordova-plugins/core';
 import * as i0 from "@angular/core";

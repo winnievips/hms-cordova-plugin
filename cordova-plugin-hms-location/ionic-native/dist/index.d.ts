@@ -13,6 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
+
 import { AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 export declare class HMSLocationOriginal extends AwesomeCordovaNativePlugin {
     getGeofenceService(): GeofenceService;

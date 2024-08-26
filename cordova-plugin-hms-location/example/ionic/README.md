@@ -138,7 +138,7 @@ This demo application demonstrates the usage of HMS Location Cordova plugin.
             /*
                 <Other dependencies>
             */
-            classpath 'com.huawei.agconnect:agcp:1.9.0.300'
+            classpath 'com.huawei.agconnect:agcp:1.9.1.301'
         }
     }
 
