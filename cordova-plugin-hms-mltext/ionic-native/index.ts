@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import {
     Plugin,
     Cordova,
     CordovaProperty, 
-    IonicNativePlugin,
-} from "@ionic-native/core";
+    AwesomeCordovaNativePlugin ,
+} from "@awesome-cordova-plugins/core";
 
 @Plugin({
     pluginName: "HMSMLTextPlugin",
@@ -29,7 +29,7 @@ import {
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLTextPlugin extends IonicNativePlugin {
+export class HMSMLTextPlugin extends AwesomeCordovaNativePlugin  {
     @CordovaProperty()
     MLLocalTextSetting = MLLocalTextSetting;
     @CordovaProperty()
@@ -130,7 +130,7 @@ export class HMSMLTextPlugin extends IonicNativePlugin {
     platforms: ["Android"], // Array of platforms supported, example: ['Android', 'iOS']
 })
 @Injectable()
-export class HMSMLText extends IonicNativePlugin {
+export class HMSMLText extends AwesomeCordovaNativePlugin  {
     @CordovaProperty()
     icrVnCaptureType = icrCaptureType;
     @CordovaProperty()

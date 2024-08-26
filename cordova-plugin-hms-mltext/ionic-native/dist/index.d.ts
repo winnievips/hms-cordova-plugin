@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IonicNativePlugin } from "@ionic-native/core";
-export declare class HMSMLTextPluginOriginal extends IonicNativePlugin {
+import { AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
+export declare class HMSMLTextPluginOriginal extends AwesomeCordovaNativePlugin {
     MLLocalTextSetting: typeof MLLocalTextSetting;
     icrVnCaptureType: typeof icrCaptureType;
     MLTextConfig: typeof MLTextConfig;
@@ -71,7 +71,7 @@ export declare class HMSMLTextPluginOriginal extends IonicNativePlugin {
      */
     disableLogger(): Promise<any>;
 }
-export declare class HMSMLTextOriginal extends IonicNativePlugin {
+export declare class HMSMLTextOriginal extends AwesomeCordovaNativePlugin {
     icrVnCaptureType: typeof icrCaptureType;
     gcrCaptureType: typeof gcrCaptureType;
     MLLocalTextSetting: typeof MLLocalTextSetting;
@@ -185,7 +185,7 @@ export declare class HMSMLTextOriginal extends IonicNativePlugin {
     switchLight(): Promise<void>;
     getLightStatus(): Promise<any>;
     setUserRegion(region: Region): Promise<any>;
-    getCountryCode(): Promise<any>;
+    getCountryCode(): Promise<string>;
 }
 export interface CustomViewModeRequest {
     isTitleAvailable: boolean;

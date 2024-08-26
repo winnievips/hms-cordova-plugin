@@ -1,5 +1,5 @@
 /*
-    Copyright 2023. Huawei Technologies Co., Ltd. All rights reserved.
+    Copyright 2023-2024. Huawei Technologies Co., Ltd. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License")
     you may not use this file except in compliance with the License.
@@ -57,29 +57,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
         console.log('Received Event: ' + id);
     }
-};
-
-async function requestPermissions() {
-    try {
-        await HMSMLTextPlugin.requestPermissions({
-            permissionList: ["camera", "readExternalStorage", "audio", "writeExternalStorage"],
-        });
-    } catch (ex) {
-        alert(JSON.stringify(ex));
-    }
-}
-async function checkPermissions() {
-    var permissionListReq = {
-        permissionList: ["camera", "readExternalStorage", "audio", "writeExternalStorage"],
-    }
-    try {
-        const result = await HMSMLTextPlugin.hasPermissions(permissionListReq);
-        alert("Camera Permission: " + result.camera.hasPermission + "\nRead External Storage Permission: " +
-            result.readExternalStorage.hasPermission + "\nWrite External Storage Permission" + result.writeExternalStorage.hasPermission +
-            "\nAudio Permission" + result.audio.hasPermission);
-    } catch (ex) {
-        alert(JSON.stringify(ex))
-    }
-}
+}; 
 
 app.initialize();
