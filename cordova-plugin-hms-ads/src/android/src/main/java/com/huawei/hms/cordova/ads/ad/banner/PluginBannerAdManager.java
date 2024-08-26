@@ -21,6 +21,7 @@ import android.graphics.Color;
 
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.BannerAdSize;
+import com.huawei.hms.ads.BiddingInfo;
 import com.huawei.hms.ads.banner.BannerView;
 import com.huawei.hms.cordova.ads.Converter;
 import com.huawei.hms.cordova.ads.ad.PluginAbstractAdManager;
@@ -45,6 +46,10 @@ public class PluginBannerAdManager extends PluginAbstractAdManager {
 
     private Context context;
 
+    private BiddingInfo biddingInfo;
+
+    private AdParam.Builder builder;
+
     public PluginBannerAdManager(Context context, PluginAdLayout parent, CordovaEventRunner manager) {
         super();
         bannerView = new BannerView(context);
@@ -52,7 +57,7 @@ public class PluginBannerAdManager extends PluginAbstractAdManager {
         this.context = context;
         pluginListenerManager = manager;
         listener = new PluginBannerAdListener(pluginListenerManager, managerId);
-
+        builder = new AdParam.Builder();
     }
 
     public BannerView getBannerView() {
@@ -206,7 +211,7 @@ public class PluginBannerAdManager extends PluginAbstractAdManager {
 
     public void loadAd(JSONObject args, final Promise promise) throws JSONException {
         if (args == null) {
-            bannerView.loadAd(new AdParam.Builder().build());
+            bannerView.loadAd(builder.build());
         } else {
             bannerView.loadAd(Converter.fromJsonObjectToAdParam(args));
         }
@@ -230,6 +235,20 @@ public class PluginBannerAdManager extends PluginAbstractAdManager {
         }
         promise.success();
     }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(bannerView, promise, ErrorAndStateCodes.AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = bannerView.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
+    }
+
 
     @Override
     public boolean hasLayout() {

@@ -19,7 +19,7 @@
 // Constants
 ///////////////////////////////////////////////////////////////////////////
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppDownloadStatus = exports.ActivateStyle = exports.CreativeMatchType = exports.DetailedCreativeType = exports.VastEvents = exports.NativeAdEvents = exports.RewardAdEvents = exports.RollAdEvents = exports.SplashAdEvents = exports.InterstitialAdEvents = exports.BannerAdEvents = exports.Anchor = exports.InstallReferrerResponses = exports.Color = exports.NativeAdTemplate = exports.MediaDirection = exports.ChoicesPosition = exports.MediaAspect = exports.AudioFocusType = exports.ConsentStatus = exports.DebugNeedConsent = exports.HMSScreenOrientation = exports.BannerAdSize = exports.UnderAgeOfPromise = exports.ChildProtection = exports.NonPersonalizedAd = exports.Gender = exports.AdContentClassification = exports.RewardAdStatusErrorCodes = exports.AdParamErrorCodes = void 0;
+exports.AutoPlayNetType = exports.AppDownloadStatus = exports.ActivateStyle = exports.CreativeMatchType = exports.DetailedCreativeType = exports.VastEvents = exports.NativeAdEvents = exports.RewardAdEvents = exports.RollAdEvents = exports.SplashAdEvents = exports.InterstitialAdEvents = exports.BannerAdEvents = exports.Anchor = exports.InstallReferrerResponses = exports.Color = exports.NativeAdTemplate = exports.MediaDirection = exports.ChoicesPosition = exports.MediaAspect = exports.AudioFocusType = exports.ConsentStatus = exports.DebugNeedConsent = exports.HMSScreenOrientation = exports.BannerAdSize = exports.UnderAgeOfPromise = exports.ChildProtection = exports.NonPersonalizedAd = exports.Gender = exports.AdContentClassification = exports.RewardAdStatusErrorCodes = exports.AdParamErrorCodes = void 0;
 var AdParamErrorCodes;
 (function (AdParamErrorCodes) {
     AdParamErrorCodes[AdParamErrorCodes["AD_PARAM_INNER"] = 0] = "AD_PARAM_INNER";
@@ -323,4 +323,10 @@ var AppDownloadStatus;
     AppDownloadStatus["INSTALL"] = "INSTALL";
     AppDownloadStatus["INSTALLED"] = "INSTALLED";
 })(AppDownloadStatus || (exports.AppDownloadStatus = AppDownloadStatus = {}));
+var AutoPlayNetType;
+(function (AutoPlayNetType) {
+    AutoPlayNetType[AutoPlayNetType["WIFI_ONLY"] = 0] = "WIFI_ONLY";
+    AutoPlayNetType[AutoPlayNetType["BOTH_WIFI_AND_DATA"] = 1] = "BOTH_WIFI_AND_DATA";
+    AutoPlayNetType[AutoPlayNetType["FORBID_AUTO_PLAY"] = 2] = "FORBID_AUTO_PLAY";
+})(AutoPlayNetType || (exports.AutoPlayNetType = AutoPlayNetType = {}));
 //# sourceMappingURL=HMSConstants.js.map

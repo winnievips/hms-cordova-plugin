@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { LayoutBounds, AdParam, RollAdLoaderParams, RollAdLoadOptions, Props, Duration, AdvertiserInfo } from './interfaces'
+import { LayoutBounds, AdParam, RollAdLoaderParams, RollAdLoadOptions, Props, Duration, AdvertiserInfo,BiddingInfo } from './interfaces'
 import { getInitialPropsOfHTMLElementFrom } from './layout'
 import { RollAdEvents } from './HMSConstants'
 import { Ads } from './ads'
@@ -204,5 +204,8 @@ export class HMSRollAd extends Ads {
     }
     getTransparencyTplUrl(): Promise<string> {
         return this.run('getTransparencyTplUrl')
+    }
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
     }
 }

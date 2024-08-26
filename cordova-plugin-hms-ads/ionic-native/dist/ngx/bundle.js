@@ -344,6 +344,12 @@ exports.AppDownloadStatus = void 0;
     AppDownloadStatus["INSTALL"] = "INSTALL";
     AppDownloadStatus["INSTALLED"] = "INSTALLED";
 })(exports.AppDownloadStatus || (exports.AppDownloadStatus = {}));
+exports.AutoPlayNetType = void 0;
+(function (AutoPlayNetType) {
+    AutoPlayNetType[AutoPlayNetType["WIFI_ONLY"] = 0] = "WIFI_ONLY";
+    AutoPlayNetType[AutoPlayNetType["BOTH_WIFI_AND_DATA"] = 1] = "BOTH_WIFI_AND_DATA";
+    AutoPlayNetType[AutoPlayNetType["FORBID_AUTO_PLAY"] = 2] = "FORBID_AUTO_PLAY";
+})(exports.AutoPlayNetType || (exports.AutoPlayNetType = {}));
 var HMSAds = /** @class */ (function (_super) {
     tslib.__extends(HMSAds, _super);
     function HMSAds() {
@@ -463,6 +469,7 @@ var HMSBannerAd = /** @class */ (function (_super) {
     HMSBannerAd.prototype.getCurrentDirectionBannerSize = function (width) { return core.cordova(this, "getCurrentDirectionBannerSize", { "otherPromise": true }, arguments); };
     HMSBannerAd.prototype.getLandscapeBannerSize = function (width) { return core.cordova(this, "getLandscapeBannerSize", { "otherPromise": true }, arguments); };
     HMSBannerAd.prototype.getPortraitBannerSize = function (width) { return core.cordova(this, "getPortraitBannerSize", { "otherPromise": true }, arguments); };
+    HMSBannerAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSBannerAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSBannerAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSBannerAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSBannerAd });
     HMSBannerAd.pluginName = "HMSAds";
@@ -475,7 +482,7 @@ var HMSBannerAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSBannerAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], scroll: [], getAdId: [], setAdId: [], getBannerAdSize: [], setBannerAdSize: [], setBackgroundColor: [], setBannerRefresh: [], setAdListener: [], isLoading: [], loadAd: [], pause: [], resume: [], destroy: [], getHeight: [], getHeightPx: [], getWidth: [], getWidthPx: [], isAutoHeightSize: [], isDynamicSize: [], isFullWidthSize: [], getCurrentDirectionBannerSize: [], getLandscapeBannerSize: [], getPortraitBannerSize: [] } });
+        }], propDecorators: { on: [], create: [], scroll: [], getAdId: [], setAdId: [], getBannerAdSize: [], setBannerAdSize: [], setBackgroundColor: [], setBannerRefresh: [], setAdListener: [], isLoading: [], loadAd: [], pause: [], resume: [], destroy: [], getHeight: [], getHeightPx: [], getWidth: [], getWidthPx: [], isAutoHeightSize: [], isDynamicSize: [], isFullWidthSize: [], getCurrentDirectionBannerSize: [], getLandscapeBannerSize: [], getPortraitBannerSize: [], getBiddingInfo: [] } });
 var HMSInterstitialAd = /** @class */ (function (_super) {
     tslib.__extends(HMSInterstitialAd, _super);
     function HMSInterstitialAd() {
@@ -500,6 +507,8 @@ var HMSInterstitialAd = /** @class */ (function (_super) {
     HMSInterstitialAd.prototype.videoOperatorPause = function () { return core.cordova(this, "videoOperatorPause", { "otherPromise": true }, arguments); };
     HMSInterstitialAd.prototype.videoOperatorPlay = function () { return core.cordova(this, "videoOperatorPlay", { "otherPromise": true }, arguments); };
     HMSInterstitialAd.prototype.videoOperatorStop = function () { return core.cordova(this, "videoOperatorStop", { "otherPromise": true }, arguments); };
+    HMSInterstitialAd.prototype.setVideoConfiguration = function (videoConfiguration) { return core.cordova(this, "setVideoConfiguration", { "otherPromise": true }, arguments); };
+    HMSInterstitialAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSInterstitialAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSInterstitialAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSInterstitialAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSInterstitialAd });
     HMSInterstitialAd.pluginName = "HMSAds";
@@ -512,7 +521,7 @@ var HMSInterstitialAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSInterstitialAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], scroll: [], show: [], isLoaded: [], isLoading: [], loadAd: [], setAdId: [], getAdId: [], setAdListener: [], setRewardAdListener: [], videoOperatorGetAspectRatio: [], videoOperatorHasVideo: [], videoOperatorIsCustomizeOperateEnabled: [], videoOperatorIsMuted: [], videoOperatorMute: [], videoOperatorPause: [], videoOperatorPlay: [], videoOperatorStop: [] } });
+        }], propDecorators: { on: [], create: [], scroll: [], show: [], isLoaded: [], isLoading: [], loadAd: [], setAdId: [], getAdId: [], setAdListener: [], setRewardAdListener: [], videoOperatorGetAspectRatio: [], videoOperatorHasVideo: [], videoOperatorIsCustomizeOperateEnabled: [], videoOperatorIsMuted: [], videoOperatorMute: [], videoOperatorPause: [], videoOperatorPlay: [], videoOperatorStop: [], setVideoConfiguration: [], getBiddingInfo: [] } });
 var HMSNativeAd = /** @class */ (function (_super) {
     tslib.__extends(HMSNativeAd, _super);
     function HMSNativeAd() {
@@ -561,6 +570,8 @@ var HMSNativeAd = /** @class */ (function (_super) {
     HMSNativeAd.prototype.isTransparencyOpen = function () { return core.cordova(this, "isTransparencyOpen", { "otherPromise": true }, arguments); };
     HMSNativeAd.prototype.getTransparencyTplUrl = function () { return core.cordova(this, "getTransparencyTplUrl", { "otherPromise": true }, arguments); };
     HMSNativeAd.prototype.getInterActionType = function () { return core.cordova(this, "getInterActionType", { "otherPromise": true }, arguments); };
+    HMSNativeAd.prototype.setVideoConfiguration = function (videoConfiguration) { return core.cordova(this, "setVideoConfiguration", { "otherPromise": true }, arguments); };
+    HMSNativeAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSNativeAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSNativeAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSNativeAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSNativeAd });
     HMSNativeAd.pluginName = "HMSAds";
@@ -573,7 +584,7 @@ var HMSNativeAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSNativeAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], loadAd: [], show: [], isLoading: [], destroy: [], dislikeAd: [], setAllowCustomClick: [], getAdSource: [], getDescription: [], getCallToAction: [], getDislikeAdReasons: [], isCustomClickAllowed: [], isCustomDislikeThisAdEnabled: [], recordClickEvent: [], recordImpressionEvent: [], getUniqueId: [], setDislikeAdListener: [], gotoWhyThisAdPage: [], getAdSign: [], getTitle: [], getWhyThisAd: [], recordShowStartEvent: [], onAdClose: [], getNativeAdConfiguration: [], setOnDownloadStatusChangedListener: [], setOnNonWifiDownloadListener: [], setShowPermissionDialog: [], setAllowedNonWifiNetwork: [], cancel: [], continueDownload: [], showAdvertiserInfoDialog: [], hideAdvertiserInfoDialog: [], hasAdvertiserInfo: [], getAdvertiserInfo: [], getAppInfo: [], getPromoteInfo: [], showAppDetailPage: [], showPrivacyPolicy: [], showPermissionPage: [], isTransparencyOpen: [], getTransparencyTplUrl: [], getInterActionType: [] } });
+        }], propDecorators: { on: [], create: [], loadAd: [], show: [], isLoading: [], destroy: [], dislikeAd: [], setAllowCustomClick: [], getAdSource: [], getDescription: [], getCallToAction: [], getDislikeAdReasons: [], isCustomClickAllowed: [], isCustomDislikeThisAdEnabled: [], recordClickEvent: [], recordImpressionEvent: [], getUniqueId: [], setDislikeAdListener: [], gotoWhyThisAdPage: [], getAdSign: [], getTitle: [], getWhyThisAd: [], recordShowStartEvent: [], onAdClose: [], getNativeAdConfiguration: [], setOnDownloadStatusChangedListener: [], setOnNonWifiDownloadListener: [], setShowPermissionDialog: [], setAllowedNonWifiNetwork: [], cancel: [], continueDownload: [], showAdvertiserInfoDialog: [], hideAdvertiserInfoDialog: [], hasAdvertiserInfo: [], getAdvertiserInfo: [], getAppInfo: [], getPromoteInfo: [], showAppDetailPage: [], showPrivacyPolicy: [], showPermissionPage: [], isTransparencyOpen: [], getTransparencyTplUrl: [], getInterActionType: [], setVideoConfiguration: [], getBiddingInfo: [] } });
 var HMSRewardAd = /** @class */ (function (_super) {
     tslib.__extends(HMSRewardAd, _super);
     function HMSRewardAd() {
@@ -599,6 +610,8 @@ var HMSRewardAd = /** @class */ (function (_super) {
     HMSRewardAd.prototype.setOnMetadataChangedListener = function () { return core.cordova(this, "setOnMetadataChangedListener", { "otherPromise": true }, arguments); };
     HMSRewardAd.prototype.setRewardAdListener = function () { return core.cordova(this, "setRewardAdListener", { "otherPromise": true }, arguments); };
     HMSRewardAd.prototype.setMobileDataAlertSwitch = function (alertSwitch) { return core.cordova(this, "setMobileDataAlertSwitch", { "otherPromise": true }, arguments); };
+    HMSRewardAd.prototype.setVideoConfiguration = function (videoConfiguration) { return core.cordova(this, "setVideoConfiguration", { "otherPromise": true }, arguments); };
+    HMSRewardAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSRewardAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRewardAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSRewardAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRewardAd });
     HMSRewardAd.pluginName = "HMSAds";
@@ -611,7 +624,7 @@ var HMSRewardAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRewardAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], show: [], resume: [], pause: [], destroy: [], loadAdWithAdId: [], loadAd: [], isLoaded: [], getData: [], getUserId: [], getReward: [], setData: [], setImmersive: [], setUserId: [], setRewardVerifyConfig: [], getRewardVerifyConfig: [], setOnMetadataChangedListener: [], setRewardAdListener: [], setMobileDataAlertSwitch: [] } });
+        }], propDecorators: { on: [], create: [], show: [], resume: [], pause: [], destroy: [], loadAdWithAdId: [], loadAd: [], isLoaded: [], getData: [], getUserId: [], getReward: [], setData: [], setImmersive: [], setUserId: [], setRewardVerifyConfig: [], getRewardVerifyConfig: [], setOnMetadataChangedListener: [], setRewardAdListener: [], setMobileDataAlertSwitch: [], setVideoConfiguration: [], getBiddingInfo: [] } });
 var HMSRollAd = /** @class */ (function (_super) {
     tslib.__extends(HMSRollAd, _super);
     function HMSRollAd() {
@@ -656,6 +669,7 @@ var HMSRollAd = /** @class */ (function (_super) {
     HMSRollAd.prototype.getTransparencyTplUrl = function () { return core.cordova(this, "getTransparencyTplUrl", { "otherPromise": true }, arguments); };
     HMSRollAd.prototype.showTransparencyDialog = function () { return core.cordova(this, "showTransparencyDialog", { "otherPromise": true }, arguments); };
     HMSRollAd.prototype.hideTransparencyDialog = function () { return core.cordova(this, "hideTransparencyDialog", { "otherPromise": true }, arguments); };
+    HMSRollAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSRollAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRollAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSRollAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRollAd });
     HMSRollAd.pluginName = "HMSAds";
@@ -668,7 +682,7 @@ var HMSRollAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSRollAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], scroll: [], loadAd: [], isLoading: [], destroy: [], pause: [], isPlaying: [], mute: [], unmute: [], onClose: [], play: [], stop: [], removeInstreamMediaChangeListener: [], removeMediaMuteListener: [], removeInstreamMediaStateListener: [], setInstreamAds: [], setInstreamMediaChangeListener: [], setMediaMuteListener: [], setInstreamMediaStateListener: [], setOnInstreamAdClickListener: [], getAdSource: [], getDuration: [], getWhyThisAd: [], getAdSign: [], isClicked: [], isExpired: [], isImageAd: [], isShown: [], isVideoAd: [], getCallToAction: [], showAdvertiserInfoDialog: [], hideAdvertiserInfoDialog: [], hasAdvertiserInfo: [], getAdvertiserInfo: [], isTransparencyOpen: [], getTransparencyTplUrl: [], showTransparencyDialog: [], hideTransparencyDialog: [] } });
+        }], propDecorators: { on: [], create: [], scroll: [], loadAd: [], isLoading: [], destroy: [], pause: [], isPlaying: [], mute: [], unmute: [], onClose: [], play: [], stop: [], removeInstreamMediaChangeListener: [], removeMediaMuteListener: [], removeInstreamMediaStateListener: [], setInstreamAds: [], setInstreamMediaChangeListener: [], setMediaMuteListener: [], setInstreamMediaStateListener: [], setOnInstreamAdClickListener: [], getAdSource: [], getDuration: [], getWhyThisAd: [], getAdSign: [], isClicked: [], isExpired: [], isImageAd: [], isShown: [], isVideoAd: [], getCallToAction: [], showAdvertiserInfoDialog: [], hideAdvertiserInfoDialog: [], hasAdvertiserInfo: [], getAdvertiserInfo: [], isTransparencyOpen: [], getTransparencyTplUrl: [], showTransparencyDialog: [], hideTransparencyDialog: [], getBiddingInfo: [] } });
 var HMSSplashAd = /** @class */ (function (_super) {
     tslib.__extends(HMSSplashAd, _super);
     function HMSSplashAd() {
@@ -688,6 +702,7 @@ var HMSSplashAd = /** @class */ (function (_super) {
     HMSSplashAd.prototype.isLoaded = function () { return core.cordova(this, "isLoaded", { "otherPromise": true }, arguments); };
     HMSSplashAd.prototype.setAdDisplayListener = function () { return core.cordova(this, "setAdDisplayListener", { "otherPromise": true }, arguments); };
     HMSSplashAd.prototype.setAudioFocusType = function (audioFocusType) { return core.cordova(this, "setAudioFocusType", { "otherPromise": true }, arguments); };
+    HMSSplashAd.prototype.getBiddingInfo = function () { return core.cordova(this, "getBiddingInfo", { "otherPromise": true }, arguments); };
     HMSSplashAd.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSSplashAd, deps: null, target: i0__namespace.ɵɵFactoryTarget.Injectable });
     HMSSplashAd.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSSplashAd });
     HMSSplashAd.pluginName = "HMSAds";
@@ -700,7 +715,7 @@ var HMSSplashAd = /** @class */ (function (_super) {
 }(core.AwesomeCordovaNativePlugin));
 i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0__namespace, type: HMSSplashAd, decorators: [{
             type: i0.Injectable
-        }], propDecorators: { on: [], create: [], setLogo: [], setWideSloganResId: [], setSloganResId: [], load: [], preloadAd: [], destroyView: [], pauseView: [], resumeView: [], isLoading: [], isLoaded: [], setAdDisplayListener: [], setAudioFocusType: [] } });
+        }], propDecorators: { on: [], create: [], setLogo: [], setWideSloganResId: [], setSloganResId: [], load: [], preloadAd: [], destroyView: [], pauseView: [], resumeView: [], isLoading: [], isLoaded: [], setAdDisplayListener: [], setAudioFocusType: [], getBiddingInfo: [] } });
 var HMSVast = /** @class */ (function (_super) {
     tslib.__extends(HMSVast, _super);
     function HMSVast() {

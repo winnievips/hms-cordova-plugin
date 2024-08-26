@@ -99,6 +99,7 @@ public class PluginInterstitialAdListener extends PluginAbstractAdListener {
             @Override
             public void onAdLoaded() {
                 configureEventNameAndParamsThenSendEvent(PluginInterstitialAdListener.INTERSTITIAL_AD_LOADED);
+                PluginInterstitialAdManager.globalInterstitialAd.setVideoConfiguration(PluginInterstitialAdManager.videoConfiguration);
             }
 
             @Override

@@ -304,6 +304,11 @@ export enum AppDownloadStatus {
     INSTALLED = "INSTALLED"
   }
 
+  export enum AutoPlayNetType{
+    WIFI_ONLY = 0,
+    BOTH_WIFI_AND_DATA = 1,
+    FORBID_AUTO_PLAY = 2
+  }
 
 ///////////////////////////////////////////////////////////////
 // Interfaces
@@ -342,7 +347,18 @@ export interface AdParam {
     detailedCreativeType?: DetailedCreativeType[];
     location? :Location,
     contentBundle? : ContentBundle,
+    tMax?: number, 
+    addBiddingParamMap?: AddBiddingParamMap,	
+    setBiddingParamMap?: {
+        [key: string]: BiddingParam;
+    }
 }
+
+export interface AddBiddingParamMap{
+    slotId: string,
+    biddingParam: BiddingParam,
+}
+
 export interface Location {
     lat: number,
     lng: number
@@ -393,6 +409,7 @@ export interface VideoConfiguration {
     clickToFullScreenRequest?: boolean;
     customizeOperateRequested?: boolean;
     isStartMuted?: boolean;
+    autoPlayNetwork?: AutoPlayNetType;
 }
 export interface NativeAdConfiguration {
     adSize: AdSize;
@@ -502,6 +519,19 @@ export interface AppInfo {
 export interface PromoteInfo {
     type: number,
     name: string
+}
+
+export interface BiddingInfo {
+    price: number,
+    cur: string,
+    nurl: string,
+    lurl: string,
+}
+
+export interface BiddingParam { 
+    bidFloor :number,
+    bidFloorCur : string, 
+    bpkgName: string[]
 }
 
 ///////////////////////////////////////////////////////////////
@@ -752,6 +782,10 @@ export class HMSBannerAd extends AwesomeCordovaNativePlugin {
     getPortraitBannerSize(width: number): Promise<AdSize> {
         return;
     }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return;
+    }
 }
 
 @Plugin({
@@ -840,6 +874,14 @@ export class HMSInterstitialAd extends AwesomeCordovaNativePlugin {
     }
     @Cordova({ otherPromise: true })
     videoOperatorStop(): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
         return;
     }
 }
@@ -1028,6 +1070,14 @@ export class HMSNativeAd extends AwesomeCordovaNativePlugin {
     getInterActionType(): Promise<number> {
         return;
     }
+    @Cordova({ otherPromise: true })
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return;
+    }
 }
 
 @Plugin({
@@ -1117,6 +1167,14 @@ export class HMSRewardAd extends AwesomeCordovaNativePlugin {
     }
     @Cordova({ otherPromise: true })
     setMobileDataAlertSwitch(alertSwitch: boolean): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
         return;
     }
 }
@@ -1290,6 +1348,10 @@ export class HMSRollAd extends AwesomeCordovaNativePlugin {
     hideTransparencyDialog(): Promise<void> {
         return;
     }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return;
+    }
 }
 
 @Plugin({
@@ -1355,6 +1417,10 @@ export class HMSSplashAd extends AwesomeCordovaNativePlugin {
     }
     @Cordova({ otherPromise: true })
     setAudioFocusType(audioFocusType: AudioFocusType): Promise<void> {
+        return;
+    }
+    @Cordova({ otherPromise: true })
+    getBiddingInfo(): Promise<BiddingInfo> {
         return;
     }
 }

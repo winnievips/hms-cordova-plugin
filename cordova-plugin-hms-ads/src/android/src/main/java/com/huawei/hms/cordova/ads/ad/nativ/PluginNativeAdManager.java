@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.AppDownloadButton;
 import com.huawei.hms.ads.AppDownloadButtonStyle;
+import com.huawei.hms.ads.VideoConfiguration;
 import com.huawei.hms.ads.VideoOperator;
 import com.huawei.hms.ads.nativead.MediaView;
 import com.huawei.hms.ads.nativead.NativeAd;
@@ -44,6 +45,7 @@ import com.huawei.hms.cordova.ads.layout.PluginAdLayout;
 import com.huawei.hms.cordova.ads.layout.PluginLayoutManager;
 import com.huawei.hms.cordova.ads.utils.ErrorAndStateCodes;
 import com.huawei.hms.cordova.ads.utils.ListToJson;
+import com.huawei.hms.ads.BiddingInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,11 +63,15 @@ public class PluginNativeAdManager extends PluginAbstractAdManager {
 
     public static final String NATIVE_BUTTON_ROUNDED_CORNERS_SHAPE = "native_button_rounded_corners_shape";
 
+    public static VideoConfiguration videoConfiguration;
+
     private NativeAd nativeAd;
 
     private AppInfo appInfo;
 
     private PromoteInfo promoteInfo;
+
+    private BiddingInfo biddingInfo;
 
     private NativeView nativeView;
 
@@ -522,5 +528,23 @@ public class PluginNativeAdManager extends PluginAbstractAdManager {
         checkIfObjectNullOrThrowError(nativeAd, promise, ErrorAndStateCodes.NATIVE_AD_NOT_INITIALIZED);
         nativeAd.getAppInfo().showPrivacyPolicy(context);
         promise.success();
+    }
+
+    public void setVideoConfiguration(JSONObject args, final Promise promise) {
+        videoConfiguration = Converter.setVideoConfiguration(args);
+        promise.success();
+    }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(nativeAd, promise, ErrorAndStateCodes.NATIVE_AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = nativeAd.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 }

@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { AdParam} from './interfaces'
+import { AdParam, BiddingInfo, VideoConfiguration} from './interfaces'
 import { Ads } from './ads'
 import { InterstitialAdEvents } from './HMSConstants'
 
@@ -65,4 +65,10 @@ export class HMSInterstitialAd extends Ads {
         return this.run('setAdListener');
     }
 
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void> {
+        return this.run('setVideoConfiguration', videoConfiguration)
+    }
+    getBiddingInfo(): Promise<BiddingInfo> {
+        return this.run('getBiddingInfo')
+    }
 }

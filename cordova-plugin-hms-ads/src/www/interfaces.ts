@@ -30,7 +30,8 @@ import {
     HMSScreenOrientation,
     Anchor,
     DetailedCreativeType,
-    CreativeMatchType
+    CreativeMatchType,
+    AutoPlayNetType
 }
     from './HMSConstants'
 
@@ -73,7 +74,17 @@ export interface AdParam {
     detailedCreativeType?: DetailedCreativeType[],
     location? :Location,
     contentBundle? : ContentBundle,
+    tMax?: number, 
+    addBiddingParamMap?: AddBiddingParamMap,	
+    setBiddingParamMap?: {
+        [key: string]: BiddingParam;
+    }
+}
 
+
+export interface AddBiddingParamMap{
+    slotId: string,
+    biddingParam: BiddingParam,
 }
 
 
@@ -134,7 +145,8 @@ export interface VideoConfiguration {
     audioFocusType?: AudioFocusType,
     clickToFullScreenRequest?: boolean,
     customizeOperateRequested?: boolean,
-    isStartMuted?: boolean
+    isStartMuted?: boolean,
+    autoPlayNetwork?: AutoPlayNetType
 }
 
 export interface NativeAdConfiguration {
@@ -253,4 +265,17 @@ export interface AppInfo {
 export interface PromoteInfo {
     type: number,
     name: string
+}
+
+export interface BiddingInfo {
+    price: number,
+    cur: string,
+    nurl: string,
+    lurl: string,
+}
+
+export interface BiddingParam { 
+    bidFloor :number,
+    bidFloorCur : string, 
+    bpkgName: string[]
 }

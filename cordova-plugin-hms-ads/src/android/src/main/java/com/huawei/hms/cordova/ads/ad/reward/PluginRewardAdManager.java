@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.VideoConfiguration;
 import com.huawei.hms.ads.reward.RewardAd;
 import com.huawei.hms.ads.reward.RewardVerifyConfig;
 import com.huawei.hms.cordova.ads.Converter;
@@ -28,6 +29,7 @@ import com.huawei.hms.cordova.ads.basef.handler.CordovaEventRunner;
 import com.huawei.hms.cordova.ads.basef.handler.Promise;
 import com.huawei.hms.cordova.ads.layout.PluginLayoutManager;
 import com.huawei.hms.cordova.ads.utils.ErrorAndStateCodes;
+import com.huawei.hms.ads.BiddingInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,11 +37,17 @@ import org.json.JSONObject;
 public class PluginRewardAdManager extends PluginAbstractAdManager {
     private RewardAd rewardAd;
 
+    public static RewardAd globalRewardAd;
+
+    public static VideoConfiguration videoConfiguration;
+
     private Activity activity;
 
     private PluginRewardAdListener listener;
 
     private RewardVerifyConfig rewardVerifyConfig = null;
+
+    private BiddingInfo biddingInfo;
 
     public PluginRewardAdManager(Context context, Activity activity, CordovaEventRunner manager, JSONObject args) {
         super();
@@ -47,7 +55,7 @@ public class PluginRewardAdManager extends PluginAbstractAdManager {
         pluginListenerManager = manager;
         this.activity = activity;
         rewardAd = new RewardAd(context, args.optString("adId"));
-
+        globalRewardAd = rewardAd;
         listener = new PluginRewardAdListener(pluginListenerManager, managerId);
     }
 
@@ -164,6 +172,24 @@ public class PluginRewardAdManager extends PluginAbstractAdManager {
         boolean alertSwitch = json.optBoolean("alertSwitch", true);
         rewardAd.setMobileDataAlertSwitch(alertSwitch);
         promise.success();
+    }
+
+    public void setVideoConfiguration(JSONObject args, final Promise promise) {
+        VideoConfiguration videoConfiguration = Converter.setVideoConfiguration(args);
+        promise.success();
+    }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(rewardAd, promise, ErrorAndStateCodes.AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = rewardAd.getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 
     @Override

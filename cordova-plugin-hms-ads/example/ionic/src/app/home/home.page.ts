@@ -34,7 +34,8 @@ import {
   HMSAds,
   VastEvents,
   CreativeMatchType,
-  MediaDirection
+  MediaDirection,
+  AutoPlayNetType
 
 } from '@hmscore/ionic-native-hms-ads/ngx';
 import { from } from 'rxjs';
@@ -110,6 +111,13 @@ export class HomePage {
     const interstitialAd = new this.hmsAds.HMSInterstitialAd();
     await interstitialAd.create(true);
     await interstitialAd.setAdId('testb4znbuh3n2');
+
+    var videoConfiguration = {
+      isStartMuted:false,
+      autoPlayNetwork: AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await interstitialAd.setVideoConfiguration(videoConfiguration);
+
     await interstitialAd.setAdListener();
     interstitialAd.on(
       InterstitialAdEvents.INTERSTITIAL_AD_LOADED,
@@ -173,6 +181,12 @@ export class HomePage {
     rewardAd.on(RewardAdEvents.REWARDED_LOADED, async () => {
       await rewardAd.show(true); // if you use loadAdWithAdId() function ,call setRewardAdListener(), listen HMSConstants.RewardAdEvents.REWARD_AD_LOADED and HMSConstants.RewardAdEvents.REWARDED
     });
+    
+    var videoConfiguration = {
+      isStartMuted:false,
+      autoPlayNetwork: AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await rewardAd.setVideoConfiguration(videoConfiguration);
 
     rewardAd.on(RewardAdEvents.REWARDED_STATUS, (reward) => {
       console.log('Reward => ', JSON.stringify(reward));
@@ -294,12 +308,21 @@ export class HomePage {
       template,
       bg: '#E4E4E4',
     });
-    const nativeAdOptions = { requestCustomDislikeThisAd: true };
+    const nativeAdOptions = { requestCustomDislikeThisAd: true
+     };
+
+
+    var videoConfiguration = {
+      isStartMuted: true,
+      autoPlayNetwork: AutoPlayNetType.FORBID_AUTO_PLAY
+    };
+    await this.nativeAdInstance.setVideoConfiguration(videoConfiguration);
 
     this.nativeAdInstance.on(NativeAdEvents.NATIVE_AD_LOADED, async () => {
       console.log('Native Ad Loaded');
       this.nativeAdInstance.show();
     });
+
     await this.nativeAdInstance.loadAd({ adId, nativeAdOptions });
 
   }

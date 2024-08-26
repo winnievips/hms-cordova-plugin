@@ -23,6 +23,8 @@ import android.util.Log;
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.AdSize;
 import com.huawei.hms.ads.AudioFocusType;
+import com.huawei.hms.ads.AutoPlayNetType;
+import com.huawei.hms.ads.BiddingParam;
 import com.huawei.hms.ads.HwAds;
 import com.huawei.hms.ads.RequestOptions;
 import com.huawei.hms.ads.VideoConfiguration;
@@ -48,6 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -129,8 +132,22 @@ public class Converter {
         if (json.has("location")) {
             builder.setLocation(fromJSONObjectToLocation((JSONObject) json.get("location")));
         }
-        return builder.build();
+        if (json.has("tMax")) {
+            builder.setTMax(json.getInt("tMax"));
+        }
+        if (json.has("addBiddingParamMap")) {
+            JSONObject addBiddingParamMapJson = json.getJSONObject("addBiddingParamMap");
 
+            if (addBiddingParamMapJson.has("slotId") && addBiddingParamMapJson.has("biddingParam")) {
+                JSONObject biddingParamJson = addBiddingParamMapJson.getJSONObject("biddingParam");
+
+                builder.addBiddingParamMap(addBiddingParamMapJson.getString("slotId"),fromJSONObjectToBiddingParam(biddingParamJson));
+            }
+        }
+        if (json.has("setBiddingParamMap")) {
+            builder.setBiddingParamMap(fromJSONObjectToBiddingParamMap((JSONObject) json.get("setBiddingParamMap")));
+        }
+        return builder.build();
     }
 
     public static Location fromJSONObjectToLocation(JSONObject json) throws JSONException {
@@ -208,6 +225,22 @@ public class Converter {
         if (requestOptionsJson.has("consent")) {
             requestOptions.setConsent(requestOptionsJson.getString("consent"));
         }
+        if (requestOptionsJson.has("tMax")) {
+            requestOptions.setTMax(requestOptionsJson.getInt("tMax"));
+        }
+        if (requestOptionsJson.has("addBiddingParamMap")) {
+            JSONObject addBiddingParamMapJson = requestOptionsJson.getJSONObject("addBiddingParamMap");
+
+            if (addBiddingParamMapJson.has("slotId") && addBiddingParamMapJson.has("biddingParam")) {
+                JSONObject biddingParamJson = addBiddingParamMapJson.getJSONObject("biddingParam");
+
+                requestOptions.addBiddingParamMap(addBiddingParamMapJson.getString("slotId"),fromJSONObjectToBiddingParam(biddingParamJson));
+            }
+        }
+        if (requestOptionsJson.has("setBiddingParamMap")) {
+            requestOptions.setBiddingParamMap(fromJSONObjectToBiddingParamMap((JSONObject) requestOptionsJson.get("setBiddingParamMap")));
+        }
+
         return requestOptions.build();
     }
 
@@ -335,8 +368,7 @@ public class Converter {
             .setChoicesPosition(json.optInt("choicesPosition", NativeAdConfiguration.ChoicesPosition.TOP_LEFT))
             .setReturnUrlsForImages(json.optBoolean("returnUrlsForImages", false))
             .setRequestCustomDislikeThisAd(json.optBoolean("requestCustomDislikeThisAd", false))
-            .setRequestMultiImages(json.optBoolean("requestMultiImages", false))
-            .setVideoConfiguration(setVideoConfiguration(json.optJSONObject("videoConfiguration")));
+            .setRequestMultiImages(json.optBoolean("requestMultiImages", false));
 
         if (json.has("mediaAspect")) {
             nativeAdConfigurationBuilder.setMediaAspect(
@@ -361,13 +393,17 @@ public class Converter {
     }
 
     private static JSONObject fromVideoConfigurationToJson(VideoConfiguration videoConfiguration) throws JSONException {
+        if (videoConfiguration == null) {
+            return null;
+        }
         return new JSONObject().put("audioFocusType", videoConfiguration.getAudioFocusType())
             .put("clickToFullScreenRequested", videoConfiguration.isClickToFullScreenRequested())
             .put("customizeOperateRequested", videoConfiguration.isCustomizeOperateRequested())
-            .put("isStartMuted", videoConfiguration.isStartMuted());
+            .put("isStartMuted", videoConfiguration.isStartMuted())
+            .put("autoPlayNetwork", videoConfiguration.getAutoPlayNetwork());
     }
 
-    private static VideoConfiguration setVideoConfiguration(JSONObject json) {
+    public static VideoConfiguration setVideoConfiguration(JSONObject json) {
         if (json == null) {
             return null;
         }
@@ -376,6 +412,7 @@ public class Converter {
             .setClickToFullScreenRequested(json.optBoolean("clickToFullScreenRequested", false))
             .setCustomizeOperateRequested(json.optBoolean("customizeOperateRequested", false))
             .setStartMuted(json.optBoolean("isStartMuted", false))
+            .setAutoPlayNetwork(json.optInt("autoPlayNetwork", AutoPlayNetType.WIFI_ONLY))
             .build();
     }
 
@@ -613,6 +650,61 @@ public class Converter {
             .put("isForceMute", playerConfig.isForceMute())
             .put("isIndustryIconShow", playerConfig.isIndustryIconShow())
             .put("isSkipLinearAd", playerConfig.isSkipLinearAd());
+    }
+
+    public static BiddingParam fromJSONObjectToBiddingParam(JSONObject json) throws JSONException {
+        BiddingParam.Builder builder = new BiddingParam.Builder();
+
+        if (json.has("bidFloor")) {
+            builder.setBidFloor((float) json.getDouble("bidFloor"));
+        }
+
+        if (json.has("bidFloorCur")) {
+            builder.setBidFloorCur(json.getString("bidFloorCur"));
+        }
+
+        if (json.has("bpkgName")) {
+            List<String> bpkgNameList = new ArrayList<>();
+            for (int i = 0; i < json.getJSONArray("bpkgName").length(); i++) {
+                bpkgNameList.add(json.getJSONArray("bpkgName").getString(i));
+            }
+            builder.setBpkgName(bpkgNameList);
+        }
+
+        return builder.build();
+    }
+
+    public static Map<String, BiddingParam> fromJSONObjectToBiddingParamMap(JSONObject json) throws JSONException {
+        Map<String, BiddingParam> biddingParamMap = new HashMap<>();
+
+        Iterator<String> keys = json.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            JSONObject paramJson = json.getJSONObject(key);
+
+            BiddingParam.Builder builder = new BiddingParam.Builder();
+
+            if (paramJson.has("bidFloor")) {
+                builder.setBidFloor((float) paramJson.getDouble("bidFloor"));
+            }
+
+            if (paramJson.has("bidFloorCur")) {
+                builder.setBidFloorCur(paramJson.getString("bidFloorCur"));
+            }
+
+            if (paramJson.has("bpkgName")) {
+                JSONArray bpkgNameJsonArray = paramJson.getJSONArray("bpkgName");
+                List<String> bpkgNameList = new ArrayList<>();
+                for (int i = 0; i < bpkgNameJsonArray.length(); i++) {
+                    bpkgNameList.add(bpkgNameJsonArray.getString(i));
+                }
+                builder.setBpkgName(bpkgNameList);
+            }
+
+            BiddingParam biddingParam = builder.build();
+            biddingParamMap.put(key, biddingParam);
+        }
+        return biddingParamMap;
     }
 
 

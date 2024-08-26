@@ -27,6 +27,7 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.BiddingInfo;
 import com.huawei.hms.ads.instreamad.InstreamAdLoader;
 import com.huawei.hms.ads.instreamad.InstreamView;
 import com.huawei.hms.cordova.ads.Converter;
@@ -70,6 +71,8 @@ public class PluginRollAdManager extends PluginAbstractAdManager {
     private Activity activity;
 
     private CorPack corPack;
+
+    private BiddingInfo biddingInfo;
 
     public PluginRollAdManager(Context context, Activity activity, PluginAdLayout parent, CordovaEventRunner manager,
         JSONObject rollAdLoaderParams, CorPack corPack) {
@@ -484,11 +487,24 @@ public class PluginRollAdManager extends PluginAbstractAdManager {
             }
     }
 
-public void hideTransparencyDialog(JSONObject json, final Promise promise) {
-        checkIfObjectNullOrThrowError(listener.getCurrentInstreamAd(), promise,
-            ErrorAndStateCodes.ROLL_AD_NOT_INITIALIZED);
-        instreamView.hideTransparencyDialog();
-        promise.success();
+    public void hideTransparencyDialog(JSONObject json, final Promise promise) {
+            checkIfObjectNullOrThrowError(listener.getCurrentInstreamAd(), promise,
+                ErrorAndStateCodes.ROLL_AD_NOT_INITIALIZED);
+            instreamView.hideTransparencyDialog();
+            promise.success();
+        }
+
+    public void getBiddingInfo(JSONObject json, final Promise promise) throws JSONException {
+        checkIfObjectNullOrThrowError(listener.getCurrentInstreamAd(), promise, ErrorAndStateCodes.AD_NOT_INITIALIZED);
+        JSONObject result = new JSONObject();
+        biddingInfo = listener.getCurrentInstreamAd().getBiddingInfo();
+        if (biddingInfo != null) {
+            result.put("price", biddingInfo.getPrice());
+            result.put("cur", biddingInfo.getCur());
+            result.put("nurl", biddingInfo.getNurl());
+            result.put("lurl", biddingInfo.getLurl());
+        }
+        promise.success(result);
     }
 
 

@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { AdParam } from './interfaces';
+import { AdParam, BiddingInfo, VideoConfiguration } from './interfaces';
 import { Ads } from './ads';
 import { InterstitialAdEvents } from './HMSConstants';
 export declare class HMSInterstitialAd extends Ads {
@@ -29,4 +29,6 @@ export declare class HMSInterstitialAd extends Ads {
     getAdId(): Promise<string>;
     setAdListener(): Promise<void>;
     setRewardAdListener(): Promise<void>;
+    setVideoConfiguration(videoConfiguration: VideoConfiguration): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }

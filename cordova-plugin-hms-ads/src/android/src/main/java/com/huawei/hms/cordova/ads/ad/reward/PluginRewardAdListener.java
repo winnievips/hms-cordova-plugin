@@ -76,7 +76,7 @@ public class PluginRewardAdListener extends PluginAbstractAdListener {
             @Override
             public void onRewardedLoaded() {
                 configureEventNameAndParamsThenSendEvent(PluginRewardAdListener.REWARDED_LOADED);
-
+                PluginRewardAdManager.globalRewardAd.setVideoConfiguration(PluginRewardAdManager.videoConfiguration);
             }
         };
     }

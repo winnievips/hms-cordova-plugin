@@ -14,7 +14,7 @@
     limitations under the License.
 */
 
-import { LayoutBounds, AdParam, Props, AdSize } from './interfaces';
+import { LayoutBounds, AdParam, Props, AdSize, BiddingInfo } from './interfaces';
 import { BannerAdSize, BannerAdEvents, Color } from './HMSConstants';
 import { Ads } from './ads';
 export declare class BannerAlreadyDefinedError extends Error {
@@ -51,4 +51,5 @@ export declare class HMSBannerAd extends Ads {
     getCurrentDirectionBannerSize(width: number): Promise<AdSize>;
     getLandscapeBannerSize(width: number): Promise<AdSize>;
     getPortraitBannerSize(width: number): Promise<AdSize>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }

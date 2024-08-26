@@ -15,7 +15,7 @@
 */
 
 import { SplashAdEvents, AudioFocusType } from './HMSConstants';
-import { SplashAdLoadOptions } from './interfaces';
+import { SplashAdLoadOptions, BiddingInfo } from './interfaces';
 import { Ads } from './ads';
 export declare class HMSSplashAd extends Ads {
     constructor();
@@ -33,4 +33,5 @@ export declare class HMSSplashAd extends Ads {
     isLoaded(): Promise<boolean>;
     setAdDisplayListener(): Promise<void>;
     setAudioFocusType(audioFocusType: AudioFocusType): Promise<void>;
+    getBiddingInfo(): Promise<BiddingInfo>;
 }
