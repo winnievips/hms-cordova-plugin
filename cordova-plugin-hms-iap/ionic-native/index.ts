@@ -15,7 +15,7 @@
 */
 
 import { Injectable } from "@angular/core";
-import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
+import { Plugin, Cordova, AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
 
 /**
  * @name HMSInAppPurchases
@@ -30,7 +30,7 @@ import { Plugin, Cordova, IonicNativePlugin } from "@ionic-native/core";
   platforms: ["Android"],
 })
 @Injectable()
-export class HMSInAppPurchases extends IonicNativePlugin {
+export class HMSInAppPurchases extends AwesomeCordovaNativePlugin {
   /**
    * Checks whether the currently signed-in HUAWEI ID is located in a country or region where HUAWEI IAP is available.
    * @return {Promise<IsEnvReadyResult>}
@@ -90,7 +90,7 @@ export class HMSInAppPurchases extends IonicNativePlugin {
    */
   @Cordova({ otherPromise: true })
   consumeOwnedPurchase(
-    consumeOwnedPurchaseReq:  
+    consumeOwnedPurchaseReq: ConsumeOwnedPurchaseReq
   ): Promise<ConsumeOwnedPurchaseResult> {
     return;
   }

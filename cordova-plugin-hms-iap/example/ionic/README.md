@@ -103,7 +103,7 @@ generated the certificate.
 5. Install HMS IAP Ionic Native wrappers.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-iap
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-iap
    ```
 
 6. Copy **`agconnect-services.json`** file to **`<project_root>/platforms/android/app`** directory.
@@ -191,7 +191,7 @@ ionic cordova run android --device
 5. Install HMS IAP Ionic Native wrappers.
 
    ```bash
-   npm install @ionic-native/core @hmscore/ionic-native-hms-iap
+   npm install @awesome-cordova-plugins/core @hmscore/ionic-native-hms-iap
    ```
 
 6. Build Ionic app to generate resource files.
@@ -354,7 +354,7 @@ If you have questions about how to use HMS samples, try the following options:
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services) is the best place for any programming questions. Be sure to tag your question
   with **`huawei-mobile-services`**.
 - [GitHub](https://github.com/HMS-Core/hms-cordova-plugin) is the official repository for these plugins, You can open an issue or submit your ideas.
-- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001?ha_source=hms1) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001&ha_source=hms1) HMS Core Module is great for general questions, or seeking recommendations and opinions.
 - [Huawei Developer Docs](https://developer.huawei.com/consumer/en/doc/overview/HMS-Core-Plugin?ha_source=hms1)
   is place to official documentation for all HMS Core Kits, you can find detailed documentations in
   there.

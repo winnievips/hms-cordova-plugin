@@ -32,7 +32,7 @@ import java.util.Arrays;
 public class HMSInAppPurchases extends CordovaPlugin {
     private static final String KIT = "IAP";
 
-    private static final String VERSION = "6.13.0.300";
+    private static final String VERSION = "6.13.0.302";
 
     private CordovaController cordovaController;
 

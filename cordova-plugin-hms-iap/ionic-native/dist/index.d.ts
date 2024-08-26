@@ -14,13 +14,13 @@
     limitations under the License.
 */
 
-import { IonicNativePlugin } from "@ionic-native/core";
+import { AwesomeCordovaNativePlugin } from "@awesome-cordova-plugins/core";
 /**
  * @name HMSInAppPurchases
  * @description
  * Huawei's In-App Purchases (IAP) service integrates multiple payment methods for global payment and allows you to easily offer in-app purchases.
  */
-export declare class HMSInAppPurchasesOriginal extends IonicNativePlugin {
+export declare class HMSInAppPurchasesOriginal extends AwesomeCordovaNativePlugin {
     /**
      * Checks whether the currently signed-in HUAWEI ID is located in a country or region where HUAWEI IAP is available.
      * @return {Promise<IsEnvReadyResult>}
